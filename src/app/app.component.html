@@ -1,7 +1,9 @@
 <header class="header">CONNECTIONS.BG</header>
 
 <div class="wrapper">
-  <div *ngFor="let row of words | slice:0:4; let i = index" class="grid-container">
-    <div *ngFor="let food of words | slice:i*4:(i+1)*4; let j = index" class="grid-item" (click)="selectWord(food, i*4 + j)" [ngClass]="currentSelection.includes(i*4 + j) ? 'selected-word' : '' ">{{ food }}</div>
+  <div *ngFor="let row of randomizedWords | slice:0:4; let i = index" class="grid-container">
+    <div *ngFor="let word of randomizedWords | slice:i*4:(i+1)*4; let j = index" class="grid-item" (click)="selectWord(word)" [ngClass]="currentSelection.includes(word) ? 'selected-word' : '' ">{{ word }}</div>
   </div>
 </div>
+
+<button type="submit" (click)="checkCategories(this.currentSelection, this.words)">Check</button>

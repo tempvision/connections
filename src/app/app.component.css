@@ -1,7 +1,7 @@
 .grid-container {
     /* display: grid; */
     grid-template-columns: repeat(4, 100px);
-    gap: 25px;
+    gap: 1%;
 
     display: flex;
     justify-content: center;
@@ -18,18 +18,18 @@
     align-items: center;
     cursor: pointer;
 
-    border-radius: 5px;
+    border-radius: 7px;
     background: #e0e0e0;
-    box-shadow:  7px 7px 14px #cccccc,
-                 -7px -7px 14px #ffffff;
+    box-shadow:  11px 11px 26px #868686,
+                 -11px -11px 26px #ffffff;
 
     margin: 10px
 }
 
 .selected-word {
-    border-radius: 5px;
+    border-radius: 7px;
     background: #e0e0e0;
-    box-shadow: inset 7px 7px 14px #363636,
+    box-shadow: inset 7px 7px 14px #747474,
                 inset -7px -7px 14px #ffffff;
 }
 
@@ -49,7 +49,5 @@
 }
 
 .wrapper {
-    height: 100vh;
-    align-content: center;
-    display: grid;
+margin-top: 100px;
 }
