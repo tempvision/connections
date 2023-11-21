@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   title = 'connections';
@@ -32,6 +33,10 @@ export class AppComponent implements OnInit {
 
   currentSelection: Array<string> = [];
 
+  constructor(private snackBar: MatSnackBar) {
+
+  }
+
   ngOnInit(): void {
     this.randomizedWords = this.shuffleArray(Object.values(this.words).reduce((acc: any, category: any) => acc.concat(category.words), []));
   }
@@ -57,35 +62,59 @@ export class AppComponent implements OnInit {
       this.currentSelection.push(word);
     }
 
-    if (this.currentSelection.length > 1) {
-      const result = this.checkCategories(this.currentSelection, this.words);
-
-      if (result) {
-        console.log("All selected words are from the same category!");
-      } else {
-        console.log("Selected words are from different categories or no category!");
-      }
-    }
   }
 
-  checkCategories(selectedWords: string[], words: any): boolean {
-    if (selectedWords.length === 0) {
-      return false; // No selected words
+  checkCategories(selectedWords: string[], words: any): void | undefined {
+    if (this.currentSelection.length !== 4) {
+      return;
     }
 
-    const firstCategory = Object.keys(words).find(category => // get the category of the first word and compare the other words
-      words[category].words.includes(selectedWords[0])
+    const categoriesCount: { [category: string]: number } = {};
+
+    // Count the occurrences of each category in the selected words
+    selectedWords.forEach(word => {
+      const category = Object.keys(words).find(cat =>
+        words[cat].words.includes(word)
+      );
+
+      if (category) {
+        categoriesCount[category] = (categoriesCount[category] || 0) + 1;
+      }
+    });
+
+    // Check if three words are from the same category
+    const oneAwayCategory = Object.keys(categoriesCount).find(
+      category => categoriesCount[category] === 3
     );
 
-    if (!firstCategory) {
-      return false; // First word doesn't belong to any category
+    if (oneAwayCategory) {
+      return this.showOneAway();
     }
 
-    return selectedWords.every(word =>
-      Object.keys(words).some(category =>
-        category === firstCategory && words[category].words.includes(word)
-      )
-    );
+    // Check if all words are in the same category
+    const allInSameCategory = Object.keys(categoriesCount).length === 1;
+
+    if (!allInSameCategory) {
+      return this.guessIsIncorrect();
+    }
+
+    this.guessIsCorrect();
+  }
+
+  guessIsCorrect() {
+
+  }
+
+  guessIsIncorrect() {
+    this.snackBar.open('Try again', 'Sad! :/');
+  }
+
+  showOneAway() { // tbi
+    this.snackBar.open('One away!', 'Sad! :/');
+  }
+
+  deselect() {
+    this.currentSelection = [];
   }
 
   isWordInCategory(selectedWord: { word: string; category: any }): boolean {

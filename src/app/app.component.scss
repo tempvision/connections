@@ -20,17 +20,16 @@
 
     border-radius: 7px;
     background: #e0e0e0;
-    box-shadow:  11px 11px 26px #868686,
-                 -11px -11px 26px #ffffff;
+    box-shadow: 11px 11px 26px #868686,
+        -11px -11px 26px #ffffff;
 
-    margin: 10px
 }
 
 .selected-word {
     border-radius: 7px;
     background: #e0e0e0;
     box-shadow: inset 7px 7px 14px #747474,
-                inset -7px -7px 14px #ffffff;
+        inset -7px -7px 14px #ffffff;
 }
 
 .header {
@@ -44,10 +43,27 @@
     font-size: xx-large;
 
     background: #e0e0e0;
-    box-shadow:  7px 7px 14px #cccccc,
-                 -7px -7px 14px #ffffff;
+    box-shadow: 7px 7px 14px #cccccc,
+        -7px -7px 14px #ffffff;
 }
 
 .wrapper {
-margin-top: 100px;
+    margin-top: 100px;
+}
+
+.btn-neu {
+    box-shadow: 7px 7px 14px #cccccc,
+        -7px -7px 14px #ffffff;
+    padding: 10px;
+    border: none;
+
+    cursor: pointer;
+}
+
+.green-bg {
+    background: #6ed7c5 !important;
+}
+
+.yellow-bg {
+    background: #d7c46e !important;
 }

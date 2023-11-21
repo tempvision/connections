@@ -2,8 +2,11 @@
 
 <div class="wrapper">
   <div *ngFor="let row of randomizedWords | slice:0:4; let i = index" class="grid-container">
-    <div *ngFor="let word of randomizedWords | slice:i*4:(i+1)*4; let j = index" class="grid-item" (click)="selectWord(word)" [ngClass]="currentSelection.includes(word) ? 'selected-word' : '' ">{{ word }}</div>
+    <div *ngFor="let word of randomizedWords | slice:i*4:(i+1)*4; let j = index" class="grid-item m-1" (click)="selectWord(word)" [ngClass]="currentSelection.includes(word) ? 'selected-word' : '' ">{{ word }}</div>
   </div>
 </div>
 
-<button type="submit" (click)="checkCategories(this.currentSelection, this.words)">Check</button>
+<div class="d-flex justify-content-center m-4">
+  <button class="btn-neu yellow-bg m-4" type="submit" (click)="deselect()">Deselect</button>
+  <button class="btn-neu green-bg m-4" type="submit" (click)="checkCategories(this.currentSelection, this.words)">Check</button>
+</div>
