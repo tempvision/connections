@@ -8,6 +8,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 
+import { AngularFireModule } from '@angular/fire/compat';
+
+import { environment } from 'env/environment';
+
+import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
+
 
 @NgModule({
   declarations: [
@@ -18,7 +27,12 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     MatSnackBarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    // provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
   selector: 'app-root',
@@ -34,12 +35,18 @@ export class AppComponent implements OnInit {
 
   currentSelection: Array<string> = [];
 
-  constructor(private snackBar: MatSnackBar) {
+  constructor(private snackBar: MatSnackBar,
+    private db: AngularFireDatabase,
+  ) {
 
   }
+  
 
   ngOnInit(): void {
     this.randomizedWords = this.shuffleArray(Object.values(this.words).reduce((acc: any, category: any) => acc.concat(category.words), []));
+
+   const words = this.db.object(`/words`).valueChanges().subscribe(res => console.log(res))
+    console.log(words)
 
     // this.currentSelection = ["Париж", "Ню Йорк", "Токио", "Сидни"]; // REMOVE
 
@@ -111,7 +118,7 @@ export class AppComponent implements OnInit {
       word => !this.currentSelection.includes(word)
     );
 
-    this.guessedWords.push({categoryName:  this.words[category].categoryName, words: this.words[category].words})
+    this.guessedWords.push({ categoryName: this.words[category].categoryName, words: this.words[category].words })
 
     this.currentSelection = [];
   }
