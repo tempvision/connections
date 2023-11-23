@@ -10,6 +10,7 @@ export class AppComponent implements OnInit {
   title = 'connections';
 
   randomizedWords: Array<string> = [];
+  guessedWords: Array<{ words: Array<string>, categoryName: string }> = [];
 
   words: any = {
     food: {
@@ -39,6 +40,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.randomizedWords = this.shuffleArray(Object.values(this.words).reduce((acc: any, category: any) => acc.concat(category.words), []));
+
+    // this.currentSelection = ["Париж", "Ню Йорк", "Токио", "Сидни"]; // REMOVE
+
   }
 
   shuffleArray(array: any) {
@@ -61,6 +65,7 @@ export class AppComponent implements OnInit {
       // If the word is not selected, add it
       this.currentSelection.push(word);
     }
+
 
   }
 
@@ -98,11 +103,17 @@ export class AppComponent implements OnInit {
       return this.guessIsIncorrect();
     }
 
-    this.guessIsCorrect();
+    this.guessIsCorrect(Object.keys(categoriesCount)[0]);
   }
 
-  guessIsCorrect() {
+  guessIsCorrect(category: string) {
+    this.randomizedWords = this.randomizedWords.filter(
+      word => !this.currentSelection.includes(word)
+    );
 
+    this.guessedWords.push({categoryName:  this.words[category].categoryName, words: this.words[category].words})
+
+    this.currentSelection = [];
   }
 
   guessIsIncorrect() {

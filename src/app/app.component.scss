@@ -1,11 +1,24 @@
 .grid-container {
-    /* display: grid; */
     grid-template-columns: repeat(4, 100px);
     gap: 1%;
 
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.guessed-grid-container {
+    gap: 1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 110px;
+
+    background: cornsilk;
+
+    text-align: center;
 
 }
 
@@ -20,9 +33,14 @@
 
     border-radius: 7px;
     background: #e0e0e0;
-    box-shadow: 11px 11px 26px #868686,
-        -11px -11px 26px #ffffff;
+    box-shadow: 2px 2px 6px #868686,
+        -2px -2px 6px #ffffff;
 
+}
+
+.guessed-word {
+    background: #868686;
+    color: white;
 }
 
 .selected-word {
@@ -45,19 +63,19 @@
     background: #e0e0e0;
     box-shadow: 7px 7px 14px #cccccc,
         -7px -7px 14px #ffffff;
-}
 
-.wrapper {
-    margin-top: 100px;
+    margin-bottom: 100px;
 }
 
 .btn-neu {
     box-shadow: 7px 7px 14px #cccccc,
         -7px -7px 14px #ffffff;
-    padding: 10px;
+    padding: 15px;
     border: none;
 
     cursor: pointer;
+
+    border-radius: 7px;
 }
 
 .green-bg {
@@ -66,4 +84,14 @@
 
 .yellow-bg {
     background: #d7c46e !important;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.category-word {
+    font-size: 1.3rem;
+    font-weight: 400;
 }
