@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "connections-bg": {
+      "hosting": {
+        "connections": [
+          "connections-bg"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "connections-bg"
+  }
+}
