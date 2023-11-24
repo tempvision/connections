@@ -66,6 +66,7 @@
         -7px -7px 14px #ffffff;
 
     margin-bottom: 100px;
+    position: relative;
 }
 
 .btn-neu {
@@ -95,4 +96,13 @@ h3 {
 .category-word {
     font-size: 1.3rem;
     font-weight: 400;
+}
+
+.info-icon {
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    cursor: pointer;
 }

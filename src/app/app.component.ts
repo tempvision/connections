@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { MatDialog } from '@angular/material/dialog';
+import { RulesComponent } from './rules/rules.component';
 
 @Component({
   selector: 'app-root',
@@ -50,12 +52,13 @@ export class AppComponent implements OnInit {
       "categoryName": "Литература"
     }
   };
-  
+
 
   currentSelection: Array<string> = [];
 
   constructor(private snackBar: MatSnackBar,
     private db: AngularFireDatabase,
+    public dialog: MatDialog
   ) {
 
   }
@@ -160,6 +163,10 @@ export class AppComponent implements OnInit {
   isWordInCategory(selectedWord: { word: string; category: any }): boolean {
     const category = this.words[selectedWord.category];
     return category && category.words.includes(selectedWord.word);
+  }
+
+  showRules() {
+    this.dialog.open(RulesComponent)
   }
 
 }

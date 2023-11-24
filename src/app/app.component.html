@@ -1,4 +1,11 @@
-<header class="header">CONNECTIONS.BG</header>
+<header class="header">
+  <span>
+    CONNECTIONS.BG
+  </span>
+  <span (click)="showRules()"><img class="info-icon"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/1200px-Icon-round-Question_mark.svg.png"
+      alt="" srcset=""></span>
+</header>
 
 <div class="wrapper">
   <div *ngFor="let row of guessedWords" class="guessed-grid-container">

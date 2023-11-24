@@ -12,15 +12,16 @@ import { AngularFireModule } from '@angular/fire/compat';
 
 import { environment } from 'env/environment';
 
-import { provideFirebaseApp, getApp, initializeApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import {MatDialogModule} from '@angular/material/dialog';
+import { RulesComponent } from './rules/rules.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RulesComponent
   ],
   imports: [
     CommonModule,
@@ -31,6 +32,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    MatDialogModule
     // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     // provideFirestore(() => getFirestore()),
   ],
