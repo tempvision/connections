@@ -13,25 +13,44 @@ export class AppComponent implements OnInit {
   randomizedWords: Array<string> = [];
   guessedWords: Array<{ words: Array<string>, categoryName: string }> = [];
 
+  // words: any = {
+  //   "food": {
+  //     "words": ["Пица", "Сьомга", "Киноа", "Манго"],
+  //     "categoryName": "Храни"
+  //   },
+  //   "cars": {
+  //     "words": ["Тойота", "Тесла", "Ферари", "Хонда"],
+  //     "categoryName": "Автомобили"
+  //   },
+  //   places: {
+  //     "words": ["Париж", "Ню Йорк", "Токио", "Сидни"],
+  //     "categoryName": "Места"
+  //   },
+  //   "instruments": {
+  //     "words": ["Пиано", "Китара", "Цигулка", "Тромпет"],
+  //     "categoryName": "Инструменти"
+  //   }
+  // };
+
   words: any = {
-    food: {
-      words: ["Пица", "Сьомга", "Киноа", "Манго"],
-      categoryName: "Храни"
+    "pesni": {
+      "words": ["Кукла", "Спасение", "Шоколад", "Приказка"],
+      "categoryName": "Песни"
     },
-    cars: {
-      words: ["Тойота", "Тесла", "Ферари", "Хонда"],
-      categoryName: "Автомобили"
+    "media": {
+      "words": ["Капитал", "Марица", "Дарик", "Бивол"],
+      "categoryName": "Медии"
     },
-    places: {
-      words: ["Париж", "Ню Йорк", "Токио", "Сидни"],
-      categoryName: "Места"
+    "cheren": {
+      "words": ["Бъз", "Чай", "Петък", "Дроб"],
+      "categoryName": "Черен ....."
     },
-    instruments: {
-      words: ["Пиано", "Китара", "Цигулка", "Тромпет"],
-      categoryName: "Инструменти"
+    "literature": {
+      "words": ["Фейлетон", "Проза", "Роман", "Басня"],
+      "categoryName": "Литература"
     }
   };
-
+  
 
   currentSelection: Array<string> = [];
 
@@ -40,12 +59,15 @@ export class AppComponent implements OnInit {
   ) {
 
   }
-  
+
 
   ngOnInit(): void {
     this.randomizedWords = this.shuffleArray(Object.values(this.words).reduce((acc: any, category: any) => acc.concat(category.words), []));
 
-   const words = this.db.object(`/words`).valueChanges().subscribe(res => console.log(res))
+    const words = this.db.object(`/words`).valueChanges().subscribe(res => console.log(res))
+
+    // const tutorialsRef = this.db.object(`/words/24-11-23`);
+    // tutorialsRef.set(this.words);
     console.log(words)
 
     // this.currentSelection = ["Париж", "Ню Йорк", "Токио", "Сидни"]; // REMOVE
