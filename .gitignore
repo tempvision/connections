@@ -4,6 +4,7 @@
 /dist
 /env
 /public
+/public/index.html
 /tmp
 /out-tsc
 /bazel-out
