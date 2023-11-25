@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'connections';
 
   randomizedWords: Array<string> = [];
-  guessedWords: Array<{ words: Array<string>, categoryName: string }> = [];
+  guessedWords: Array<{ words: Array<string>, categoryName: string, color: string | undefined }> = [];
 
   // words: any = {
   //   "food": {
@@ -34,24 +34,45 @@ export class AppComponent implements OnInit {
   //   }
   // };
 
-  words: any = {
-    "pesni": {
-      "words": ["Кукла", "Спасение", "Шоколад", "Приказка"],
-      "categoryName": "Песни"
+  // words: WordsObject = {
+  //   pesni: {
+  //     "words": ["Кукла", "Спасение", "Шоколад", "Приказка"],
+  //     "categoryName": "Песни"
+  //   },
+  //   media: {
+  //     "words": ["Капитал", "Марица", "Дарик", "Бивол"],
+  //     "categoryName": "Медии"
+  //   },
+  //   cheren: {
+  //     "words": ["Бъз", "Чай", "Петък", "Дроб"],
+  //     "categoryName": "Черен ....."
+  //   },
+  //   literature: {
+  //     "words": ["Фейлетон", "Проза", "Роман", "Басня"],
+  //     "categoryName": "Литература"
+  //   }
+  // };
+
+    words: WordsObject = {
+    duhove: {
+      "words": ["Вампир", "Тенец", "Караконджул", "Призрак"],
+      "categoryName": "Духове"
     },
-    "media": {
-      "words": ["Капитал", "Марица", "Дарик", "Бивол"],
-      "categoryName": "Медии"
+    kotki: {
+      "words": ["Персия", "Бриталния", "Сибир", "Шотландия"],
+      "categoryName": "Породи котки, кръстени на държава"
     },
-    "cheren": {
-      "words": ["Бъз", "Чай", "Петък", "Дроб"],
-      "categoryName": "Черен ....."
+    sastoqniq: {
+      "words": ["Твърдо", "Течно", "Газообразно", "Плазма"],
+      "categoryName": "Агрегатни състояния"
     },
-    "literature": {
-      "words": ["Фейлетон", "Проза", "Роман", "Басня"],
-      "categoryName": "Литература"
+    ujni: {
+      "words": ["Корея", "Америка", "Полюс", "Африка"],
+      "categoryName": "Географски понятия с Южен/Южна"
     }
   };
+
+  colors = ["bisque", "aquamarine", "cornsilk", "thistle"];
 
 
   currentSelection: Array<string> = [];
@@ -73,8 +94,24 @@ export class AppComponent implements OnInit {
     // tutorialsRef.set(this.words);
     console.log(words)
 
+    this.words = this.assignColors(this.words);
+
+    console.log(this.words)
+
+    // assign colors: bisque, aquamarine, cornsilk, thistle
+
     // this.currentSelection = ["Париж", "Ню Йорк", "Токио", "Сидни"]; // REMOVE
 
+  }
+
+  assignColors(obj: WordsObject): WordsObject {
+    const colorDict: WordsObject = {};
+    Object.keys(obj).forEach((key, index) => {
+      const color = this.colors[index % this.colors.length];
+      colorDict[key] = { ...obj[key], color };
+      colorDict[key].color = color; // Add color property inside the nested structure
+    });
+    return colorDict;
   }
 
   shuffleArray(array: any) {
@@ -143,17 +180,17 @@ export class AppComponent implements OnInit {
       word => !this.currentSelection.includes(word)
     );
 
-    this.guessedWords.push({ categoryName: this.words[category].categoryName, words: this.words[category].words })
+    this.guessedWords.push({ categoryName: this.words[category].categoryName, words: this.words[category].words, color: this.words[category].color })
 
     this.currentSelection = [];
   }
 
   guessIsIncorrect() {
-    this.snackBar.open('Try again', 'Sad! :/');
+    this.snackBar.open('Try again', 'Sad! :/', { panelClass: ['success-snackbar'], duration: 4000 });
   }
 
   showOneAway() { // tbi
-    this.snackBar.open('One away!', 'Sad! :/');
+    this.snackBar.open('One away!', 'Sad! :/', { panelClass: ['success-snackbar'], duration: 4000 });
   }
 
   deselect() {
@@ -169,4 +206,14 @@ export class AppComponent implements OnInit {
     this.dialog.open(RulesComponent)
   }
 
+}
+
+interface Category {
+  words: string[];
+  categoryName: string;
+  color?: string; // Optional color property
+}
+
+interface WordsObject {
+  [key: string]: Category;
 }
