@@ -84,6 +84,8 @@ export class AdminPanelComponent implements OnInit {
 
     const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
     newDatesRef.set(this.newWords);
+
+    this.resetForms();
   }
 
   formatWords(rawValue: any) {
@@ -92,5 +94,12 @@ export class AdminPanelComponent implements OnInit {
       categoryName: rawValue.displayCategory
     }
 
+  }
+
+  resetForms() {
+    this.firstCategory.reset();
+    this.secondCategory.reset();
+    this.thirdCategory.reset();
+    this.fourthCategory.reset();
   }
 }
