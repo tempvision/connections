@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
       "categoryName": "Духове"
     },
     kotki: {
-      "words": ["Персия", "Бриталния", "Сибир", "Шотландия"],
+      "words": ["Персия", "Британия", "Сибир", "Шотландия"],
       "categoryName": "Породи котки, кръстени на държава"
     },
     sastoqniq: {
