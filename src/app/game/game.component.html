@@ -32,7 +32,7 @@
     <div *ngFor="let row of randomizedWords | slice:0:4; let i = index" class="grid-container">
       <div *ngFor="let word of randomizedWords | slice:i*4:(i+1)*4; let j = index" class="grid-item m-1"
         (click)="selectWord(word)" [ngClass]="currentSelection.includes(word) ? 'selected-word' : '' ">
-        <span style="overflow-wrap: anywhere;">
+        <span >
 
           {{ word }}
         </span>
@@ -55,4 +55,22 @@
 
 <div *ngIf="livesLeft === 0" class="d-flex justify-content-center text-info">
   Опитай отново утре!
+</div>
+
+<div class="wrapper" *ngIf="livesLeft === 0">
+  <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color }">
+    <div>
+      <div>
+        <h3>{{ row.categoryName }}</h3>
+      </div>
+      <div>
+        <ng-container *ngFor="let word of row.words">
+          <span class="category-word">
+            {{ word }},
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+
 </div>

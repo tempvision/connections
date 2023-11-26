@@ -24,8 +24,10 @@
 }
 
 .grid-item {
-  width: 100px;
+  width: 120px;
+  min-width: 85px;
   height: 100px;
+  font-weight: 500;
   // border: 1px solid #ccc;
   display: flex;
   justify-content: center;
@@ -134,4 +136,5 @@ h3 {
 
 .text-info {
   font-size: x-large;
+  margin-bottom: 50px;
 }

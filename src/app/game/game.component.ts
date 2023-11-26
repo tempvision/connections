@@ -137,18 +137,49 @@ export class GameComponent {
 
   }
 
-  checkCategories(selectedWords: string[], words: any): void | undefined {
-    if (this.currentSelection.length !== 4) {
-      return;
+  getRemainingCategory() {
+    const remainingCategories: any = [];
+  
+    Object.keys(this.words).forEach(category => {
+      const remainingWords = this.words[category].words.filter(word => this.randomizedWords.includes(word));
+      if (remainingWords.length > 0) {
+        remainingCategories.push({
+          words: remainingWords,
+          categoryName: this.words[category].categoryName,
+          color: this.words[category].color
+        });
+      }
+    });
+  
+    if (remainingCategories.length > 0) {
+      // If there are remaining categories, return the first one
+      return remainingCategories;
     }
+  
+    // If no remaining categories, return undefined
+    return undefined;
+  }
+
+  checkLives() {
     this.livesLeft -= 1;
 
     if (this.livesLeft === 0) {
+      const remainingCategory = this.getRemainingCategory();
+    
+    if (remainingCategory) {
+      this.guessedWords = [...this.guessedWords, ...remainingCategory];
+    }
       this.dialog.open(ResultComponent, {
         data: {
           colors: this.guessedWordsColor
         }
       })
+      return;
+    }
+  }
+
+  checkCategories(selectedWords: string[], words: any): void | undefined {
+    if (this.currentSelection.length !== 4) {
       return;
     }
 
@@ -171,6 +202,7 @@ export class GameComponent {
     );
 
     if (oneAwayCategory) {
+      this.checkLives();
       return this.showOneAway();
     }
 
@@ -178,6 +210,7 @@ export class GameComponent {
     const allInSameCategory = Object.keys(categoriesCount).length === 1;
 
     if (!allInSameCategory) {
+      this.checkLives();
       return this.guessIsIncorrect();
     }
 
