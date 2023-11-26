@@ -139,7 +139,7 @@ export class GameComponent {
 
   getRemainingCategory() {
     const remainingCategories: any = [];
-  
+
     Object.keys(this.words).forEach(category => {
       const remainingWords = this.words[category].words.filter(word => this.randomizedWords.includes(word));
       if (remainingWords.length > 0) {
@@ -150,12 +150,12 @@ export class GameComponent {
         });
       }
     });
-  
+
     if (remainingCategories.length > 0) {
       // If there are remaining categories, return the first one
       return remainingCategories;
     }
-  
+
     // If no remaining categories, return undefined
     return undefined;
   }
@@ -165,10 +165,10 @@ export class GameComponent {
 
     if (this.livesLeft === 0) {
       const remainingCategory = this.getRemainingCategory();
-    
-    if (remainingCategory) {
-      this.guessedWords = [...this.guessedWords, ...remainingCategory];
-    }
+
+      if (remainingCategory) {
+        this.guessedWords = [...this.guessedWords, ...remainingCategory];
+      }
       this.dialog.open(ResultComponent, {
         data: {
           colors: this.guessedWordsColor
@@ -229,6 +229,14 @@ export class GameComponent {
     this.guessedWords.push({ categoryName: this.words[category].categoryName, words: this.words[category].words, color: this.words[category].color })
 
     this.currentSelection = [];
+
+    if (this.guessedWords.length === 4) {
+      this.dialog.open(ResultComponent, {
+        data: {
+          colors: this.guessedWordsColor
+        }
+      });
+    }
   }
 
   guessIsIncorrect() {
