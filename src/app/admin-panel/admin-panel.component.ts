@@ -75,12 +75,15 @@ export class AdminPanelComponent implements OnInit {
   }
 
   saveWords() {
-    // const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
-    // newDatesRef.set(this.newWords);
     this.formatWords(this.firstCategory.getRawValue());
     this.formatWords(this.secondCategory.getRawValue());
     this.formatWords(this.thirdCategory.getRawValue());
     this.formatWords(this.fourthCategory.getRawValue());
+
+    console.log(this.newWords)
+
+    const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
+    newDatesRef.set(this.newWords);
   }
 
   formatWords(rawValue: any) {
@@ -89,6 +92,5 @@ export class AdminPanelComponent implements OnInit {
       categoryName: rawValue.displayCategory
     }
 
-    console.log(this.newWords)
   }
 }

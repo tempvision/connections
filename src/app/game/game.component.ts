@@ -84,7 +84,6 @@ export class GameComponent {
     private db: AngularFireDatabase,
     public dialog: MatDialog
   ) {
-
   }
 
 
