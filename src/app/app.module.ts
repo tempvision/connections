@@ -15,6 +15,10 @@ import { environment } from 'env/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import {MatDialogModule} from '@angular/material/dialog';
 import { RulesComponent } from './rules/rules.component';
+import { AdminPanelModule } from './admin-panel/admin-panel.module';
+import { GameModule } from './game/game.module';
+import { GameRoutingModule } from './game/game-routing.module';
+import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.module';
 
 
 
@@ -24,17 +28,17 @@ import { RulesComponent } from './rules/rules.component';
     RulesComponent
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
     AppRoutingModule,
+    // CommonModule,
+    BrowserModule,
     MatSnackBarModule,
     BrowserAnimationsModule,
     AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    MatDialogModule
-    // provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-    // provideFirestore(() => getFirestore()),
+    MatDialogModule,
+    GameModule,
+    AdminPanelModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

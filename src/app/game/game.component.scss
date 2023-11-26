@@ -1,0 +1,137 @@
+.grid-container {
+    grid-template-columns: repeat(4, 100px);
+    gap: 1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.guessed-grid-container {
+    gap: 1%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100px;
+
+    background: cornsilk;
+
+    text-align: center;
+
+    margin-bottom: 10px;
+}
+
+.grid-item {
+    width: 100px;
+    height: 100px;
+    // border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    border-radius: 7px;
+    background: #e0e0e0;
+    box-shadow: 2px 2px 6px #868686,
+        -2px -2px 6px #ffffff;
+
+}
+
+.guessed-word {
+    background: #868686;
+    color: white;
+}
+
+.selected-word {
+    border-radius: 7px;
+    background: #e0e0e0;
+    box-shadow: inset 7px 7px 14px #747474,
+        inset -7px -7px 14px #ffffff;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-weight: bold;
+    font-size: xx-large;
+
+    background: #e0e0e0;
+    box-shadow: 7px 7px 14px #cccccc,
+        -7px -7px 14px #ffffff;
+
+    margin-bottom: 100px;
+    position: relative;
+}
+
+.btn-neu {
+    box-shadow: 2px 2px 6px #868686,
+        -2px -2px 6px #ffffff;
+    padding: 15px;
+    border: none;
+
+    cursor: pointer;
+
+    border-radius: 7px;
+}
+
+.green-bg {
+    background: #6ed7c5 !important;
+}
+
+.yellow-bg {
+    background: #d7c46e !important;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.category-word {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.info-icon {
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    cursor: pointer;
+}
+
+.success-snackbar.mat-mdc-snack-bar-container {
+    .mdc-snackbar__surface {
+      background: green;
+  
+      .mat-mdc-button {
+        color: white !important;
+      }
+    }
+  
+    .mat-mdc-snack-bar-label.mdc-snackbar__label {
+      color: white;
+      font-weight: 500;
+      white-space: pre-wrap
+    }
+  }
+
+  .success-snackbar {
+    --mdc-snackbar-container-color: green;
+    --mat-mdc-snack-bar-button-color: white;
+  }
+
+  .mat-mdc-snack-bar-container {
+    &.success-snackbar {
+      --mdc-snackbar-container-color: #2196f3;
+      --mat-mdc-snack-bar-button-color: #fff;
+      --mdc-snackbar-supporting-text-color: #fff;
+    }
+  }

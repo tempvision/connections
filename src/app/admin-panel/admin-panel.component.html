@@ -1,0 +1,166 @@
+<h2>свободна дата: {{nextFreeDate}}</h2>
+
+<div class="wrapper"> <!--FIRST CATEGORY -->
+    Въведи долу
+    <form [formGroup]="firstCategory">
+        <div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория на латиница</mat-label>
+                <input formControlName="latinCategory" matInput type="text" placeholder="Категория на латиница">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория, която ще се покаже</mat-label>
+                <input formControlName="displayCategory" matInput type="text"
+                    placeholder="Категория, която ще се покаже">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 1</mat-label>
+            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 2</mat-label>
+            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 3</mat-label>
+            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 4</mat-label>
+            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
+        </mat-form-field>
+    </form>
+
+</div>
+
+<div class="wrapper"> <!--second CATEGORY -->
+    Въведи долу
+    <form [formGroup]="secondCategory">
+        <div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория на латиница</mat-label>
+                <input formControlName="latinCategory" matInput type="text" placeholder="Категория на латиница">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория, която ще се покаже</mat-label>
+                <input formControlName="displayCategory" matInput type="text"
+                    placeholder="Категория, която ще се покаже">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 1</mat-label>
+            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 2</mat-label>
+            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 3</mat-label>
+            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 4</mat-label>
+            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
+        </mat-form-field>
+    </form>
+
+</div>
+
+<div class="wrapper"> <!--third CATEGORY -->
+    Въведи долу
+    <form [formGroup]="thirdCategory">
+        <div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория на латиница</mat-label>
+                <input formControlName="latinCategory" matInput type="text" placeholder="Категория на латиница">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория, която ще се покаже</mat-label>
+                <input formControlName="displayCategory" matInput type="text"
+                    placeholder="Категория, която ще се покаже">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 1</mat-label>
+            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 2</mat-label>
+            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 3</mat-label>
+            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 4</mat-label>
+            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
+        </mat-form-field>
+    </form>
+
+</div>
+
+<div class="wrapper"> <!--Fourth CATEGORY -->
+    Въведи долу
+    <form [formGroup]="fourthCategory">
+        <div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория на латиница</mat-label>
+                <input formControlName="latinCategory" matInput type="text" placeholder="Категория на латиница">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Категория, която ще се покаже</mat-label>
+                <input formControlName="displayCategory" matInput type="text"
+                    placeholder="Категория, която ще се покаже">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 1</mat-label>
+            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 2</mat-label>
+            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 3</mat-label>
+            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Дума 4</mat-label>
+            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
+        </mat-form-field>
+    </form>
+
+</div>
+
+
+<button (click)="saveWords()">
+    Save
+</button>
