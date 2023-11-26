@@ -1,0 +1,11 @@
+<div class="container">
+    <button class="btn-neu close-btn" mat-icon-button aria-label="close dialog" mat-dialog-close>
+        X
+      </button>
+    <div *ngFor="let guess of data.colors" class="d-flex justify-content-center">
+        <span *ngFor="let color of guess" [ngStyle]="{'background-color': color }" class="guessed-color-box">
+            <!-- {{color}} -->
+        </span>
+    </div>
+    <button [cdkCopyToClipboard]="clipboardResult" class="btn-neu">Копирай резултата в клипборда</button>
+</div>

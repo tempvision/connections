@@ -13,19 +13,20 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'env/environment';
 
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { RulesComponent } from './rules/rules.component';
 import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { GameModule } from './game/game.module';
-import { GameRoutingModule } from './game/game-routing.module';
-import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.module';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+import { ResultComponent } from './result/result.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RulesComponent
+    RulesComponent,
+    ResultComponent
   ],
   imports: [
     AppRoutingModule,
@@ -39,6 +40,7 @@ import { AdminPanelRoutingModule } from './admin-panel/admin-panel-routing.modul
     MatDialogModule,
     GameModule,
     AdminPanelModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

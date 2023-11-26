@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { MatDialog } from '@angular/material/dialog';
 import { RulesComponent } from '../rules/rules.component';
+import { ResultComponent } from '../result/result.component';
 
 @Component({
   selector: 'app-game',
@@ -76,6 +77,8 @@ export class GameComponent {
 
 
   currentSelection: Array<string> = [];
+  guessedWordsColor: Array<any> = [];
+  livesLeft: number = 5;
 
   constructor(private snackBar: MatSnackBar,
     private db: AngularFireDatabase,
@@ -86,22 +89,19 @@ export class GameComponent {
 
 
   ngOnInit(): void {
-
-    const words = this.db.object(`/words/${new Date().toJSON().slice(0, 10)}`).valueChanges().subscribe((res: any) => {
+    this.db.object(`/words/${new Date().toJSON().slice(0, 10)}`).valueChanges().subscribe((res: any) => {
       this.words = res;
       this.randomizedWords = this.randomizeWords(this.words)
-      // const tutorialsRef = this.db.object(`/words/2023-11-28`);
-      // tutorialsRef.set(this.words);
       this.words = this.assignColors(this.words);
-    }) // 
-
-    // new Date().toJSON().slice(0,10) = '2023-11-26'
-
-
+    })
   }
 
   randomizeWords(words: WordsObject) {
     return this.shuffleArray(Object.values(words).reduce((acc: any, category: any) => acc.concat(category.words), []));
+  }
+
+  getLives(count: number) {
+    return Array(count).fill(0).map((x, i) => i);
   }
 
   assignColors(obj: WordsObject): WordsObject {
@@ -142,6 +142,16 @@ export class GameComponent {
     if (this.currentSelection.length !== 4) {
       return;
     }
+    this.livesLeft -= 1;
+
+    if (this.livesLeft === 0) {
+      this.dialog.open(ResultComponent, {
+        data: {
+          colors: this.guessedWordsColor
+        }
+      })
+      return;
+    }
 
     const categoriesCount: { [category: string]: number } = {};
 
@@ -173,6 +183,7 @@ export class GameComponent {
     }
 
     this.guessIsCorrect(Object.keys(categoriesCount)[0]);
+
   }
 
   guessIsCorrect(category: string) {
@@ -180,17 +191,38 @@ export class GameComponent {
       word => !this.currentSelection.includes(word)
     );
 
+    const categoryColors = this.currentSelection.map(word => this.words[category].color);
+    this.guessedWordsColor.push(categoryColors);
+
     this.guessedWords.push({ categoryName: this.words[category].categoryName, words: this.words[category].words, color: this.words[category].color })
 
     this.currentSelection = [];
   }
 
   guessIsIncorrect() {
-    this.snackBar.open('Try again', 'Sad! :/', { panelClass: ['success-snackbar'], duration: 4000 });
+    this.snackBar.open('Опитай пак', 'Ок! :/', { panelClass: ['success-snackbar'], duration: 4000 });
+
+    const incorrectColors = this.currentSelection.map(word => {
+      const category = Object.keys(this.words).find(cat =>
+        this.words[cat].words.includes(word)
+      );
+      return category ? this.words[category].color : "";
+    });
+
+    this.guessedWordsColor.push(incorrectColors);
   }
 
   showOneAway() { // tbi
-    this.snackBar.open('One away!', 'Sad! :/', { panelClass: ['success-snackbar'], duration: 4000 });
+    this.snackBar.open('Много близо!', 'Ок! :/', { panelClass: ['success-snackbar'], duration: 4000 });
+
+    const oneAwayColors = this.currentSelection.map(word => {
+      const category = Object.keys(this.words).find(cat =>
+        this.words[cat].words.includes(word)
+      );
+      return category ? this.words[category].color : "";
+    });
+
+    this.guessedWordsColor.push(oneAwayColors);
   }
 
   deselect() {

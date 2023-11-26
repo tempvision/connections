@@ -28,16 +28,6 @@ html {
     display: flex;
 }
 
-.btn-neu {
-    box-shadow: 2px 2px 6px #868686,
-        -2px -2px 6px #ffffff;
-    padding: 15px;
-    border: none;
-
-    cursor: pointer;
-
-    border-radius: 7px;
-}
 
 $spacing: 1rem;
 
@@ -62,4 +52,28 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.container {
+    padding: 100px
+}
+
+.btn-neu {
+    box-shadow: 2px 2px 6px #868686,
+        -2px -2px 6px #ffffff;
+    padding: 15px;
+    border: none;
+
+    cursor: pointer;
+
+    border-radius: 7px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 14px;
+    min-width: auto;
+    margin: 15px;
 }
