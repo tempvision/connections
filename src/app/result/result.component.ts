@@ -35,10 +35,10 @@ export class ResultComponent implements OnInit {
   // Function to map color to emoji for a single color or an array of colors
   mapColorToEmoji(colors: string | string[]): string | string[] {
     const colorEmojiMap: { [key: string]: string } = {
-      'aquamarine': '🔵',
-      'bisque': '🟠',
-      'cornsilk': '🟡',
-      'thistle': '🟢'
+      '#ADBDFF': '🔵',
+      '#FAA381': '🟡',
+      '#B74F6F': '🔴',
+      '#230C0F': '🟤'
     };
 
     if (Array.isArray(colors)) {
