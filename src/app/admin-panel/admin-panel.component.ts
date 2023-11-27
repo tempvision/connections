@@ -90,8 +90,8 @@ export class AdminPanelComponent implements OnInit {
 
       console.log(this.newWords)
 
-      // const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
-      // newDatesRef.set(this.newWords);
+      const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
+      newDatesRef.set(this.newWords);
 
       this.resetForms();
     } else {

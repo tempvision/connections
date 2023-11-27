@@ -14,67 +14,9 @@ export class GameComponent {
   randomizedWords: Array<string> = [];
   guessedWords: Array<{ words: Array<string>, categoryName: string, color: string | undefined }> = [];
 
-  // words: any = {
-  //   "food": {
-  //     "words": ["Пица", "Сьомга", "Киноа", "Манго"],
-  //     "categoryName": "Храни"
-  //   },
-  //   "cars": {
-  //     "words": ["Тойота", "Тесла", "Ферари", "Хонда"],
-  //     "categoryName": "Автомобили"
-  //   },
-  //   places: {
-  //     "words": ["Париж", "Ню Йорк", "Токио", "Сидни"],
-  //     "categoryName": "Места"
-  //   },
-  //   "instruments": {
-  //     "words": ["Пиано", "Китара", "Цигулка", "Тромпет"],
-  //     "categoryName": "Инструменти"
-  //   }
-  // };
-
-  // words: WordsObject = {
-  //   pesni: {
-  //     "words": ["Кукла", "Спасение", "Шоколад", "Приказка"],
-  //     "categoryName": "Песни"
-  //   },
-  //   media: {
-  //     "words": ["Капитал", "Марица", "Дарик", "Бивол"],
-  //     "categoryName": "Медии"
-  //   },
-  //   cheren: {
-  //     "words": ["Бъз", "Чай", "Петък", "Дроб"],
-  //     "categoryName": "Черен ....."
-  //   },
-  //   literature: {
-  //     "words": ["Фейлетон", "Проза", "Роман", "Басня"],
-  //     "categoryName": "Литература"
-  //   }
-  // };
-
-  // words: WordsObject = {
-  //   duhove: {
-  //     "words": ["Вампир", "Тенец", "Караконджул", "Призрак"],
-  //     "categoryName": "Духове"
-  //   },
-  //   kotki: {
-  //     "words": ["Персия", "Британия", "Сибир", "Шотландия"],
-  //     "categoryName": "Породи котки, кръстени на държава"
-  //   },
-  //   sastoqniq: {
-  //     "words": ["Твърдо", "Течно", "Газообразно", "Плазма"],
-  //     "categoryName": "Агрегатни състояния"
-  //   },
-  //   ujni: {
-  //     "words": ["Корея", "Америка", "Полюс", "Африка"],
-  //     "categoryName": "Географски понятия с Южен/Южна"
-  //   }
-  // };
-
   words: WordsObject;
 
   colors = ["#B74F6F", "#ADBDFF", "#FAA381", "#230C0F"];
-
 
   currentSelection: Array<string> = [];
   guessedWordsColor: Array<any> = [];
@@ -104,16 +46,6 @@ export class GameComponent {
     return Array(count).fill(0).map((x, i) => i);
   }
 
-  assignColors(obj: WordsObject): WordsObject {
-    const colorDict: WordsObject = {};
-    Object.keys(obj).forEach((key, index) => {
-      const color = this.colors[index % this.colors.length];
-      colorDict[key] = { ...obj[key], color };
-      colorDict[key].color = color; // Add color property inside the nested structure
-    });
-    return colorDict;
-  }
-
   shuffleArray(array: any) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -134,8 +66,6 @@ export class GameComponent {
       // If the word is not selected, add it
       this.currentSelection.push(word);
     }
-
-
   }
 
   getRemainingCategory() {
