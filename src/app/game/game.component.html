@@ -14,11 +14,11 @@
     <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color }">
       <div>
         <div>
-          <h3>{{ row.categoryName }}</h3>
+          <h3 [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black' }">{{ row.categoryName }}</h3>
         </div>
         <div>
           <ng-container *ngFor="let word of row.words">
-            <span class="category-word">
+            <span class="category-word" [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black' }">
               {{ word }},
             </span>
           </ng-container>
@@ -58,14 +58,14 @@
 </div>
 
 <div class="wrapper" *ngIf="livesLeft === 0">
-  <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color }">
+  <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color, 'color': row.color === '#230C0F' ? 'white' : 'black' }">
     <div>
-      <div>
+      <div [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black' }">
         <h3>{{ row.categoryName }}</h3>
       </div>
       <div>
         <ng-container *ngFor="let word of row.words">
-          <span class="category-word">
+          <span class="category-word" [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black' }">
             {{ word }},
           </span>
         </ng-container>

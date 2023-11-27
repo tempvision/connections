@@ -20,40 +20,46 @@ export class AdminPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.firstCategory = this.fb.group({
-      latinCategory: ['', Validators.required],
+      number: { value: '1', disabled: true },
       displayCategory: ['', Validators.required],
       word1: ['', Validators.required],
       word2: ['', Validators.required],
       word3: ['', Validators.required],
       word4: ['', Validators.required],
+      color: ['#B74F6F'],
     });
 
     this.secondCategory = this.fb.group({
-      latinCategory: ['', Validators.required],
+      number: { value: '2', disabled: true },
       displayCategory: ['', Validators.required],
       word1: ['', Validators.required],
       word2: ['', Validators.required],
       word3: ['', Validators.required],
       word4: ['', Validators.required],
+      color: ['#ADBDFF'],
     });
 
     this.thirdCategory = this.fb.group({
-      latinCategory: ['', Validators.required],
+      number: { value: '3', disabled: true },
       displayCategory: ['', Validators.required],
       word1: ['', Validators.required],
       word2: ['', Validators.required],
       word3: ['', Validators.required],
       word4: ['', Validators.required],
+      color: ['#230C0F'],
     });
 
     this.fourthCategory = this.fb.group({
-      latinCategory: ['', Validators.required],
+      number: { value: '4', disabled: true },
       displayCategory: ['', Validators.required],
       word1: ['', Validators.required],
       word2: ['', Validators.required],
       word3: ['', Validators.required],
       word4: ['', Validators.required],
+      color: ['#FAA381'],
     });
+
+    // colors: 230C0F FAA381 EAF2D7 #B74F6F #ADBDFF
 
     const words = this.db.object(`/words`).valueChanges().subscribe(res => { console.log(res); this.apiResponse = res; this.findNextFreeDate(res) })
   }
@@ -75,23 +81,29 @@ export class AdminPanelComponent implements OnInit {
   }
 
   saveWords() {
-    this.formatWords(this.firstCategory.getRawValue());
-    this.formatWords(this.secondCategory.getRawValue());
-    this.formatWords(this.thirdCategory.getRawValue());
-    this.formatWords(this.fourthCategory.getRawValue());
 
-    console.log(this.newWords)
+    if (this.firstCategory.valid && this.secondCategory.valid && this.thirdCategory.valid && this.fourthCategory.valid) {
+      this.formatWords(this.firstCategory.getRawValue());
+      this.formatWords(this.secondCategory.getRawValue());
+      this.formatWords(this.thirdCategory.getRawValue());
+      this.formatWords(this.fourthCategory.getRawValue());
 
-    const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
-    newDatesRef.set(this.newWords);
+      console.log(this.newWords)
 
-    this.resetForms();
+      // const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
+      // newDatesRef.set(this.newWords);
+
+      this.resetForms();
+    } else {
+      // snackbar
+    }
   }
 
   formatWords(rawValue: any) {
-    this.newWords[rawValue.latinCategory] = {
+    this.newWords[rawValue.number] = {
       words: [rawValue.word1, rawValue.word2, rawValue.word3, rawValue.word4],
-      categoryName: rawValue.displayCategory
+      categoryName: rawValue.displayCategory,
+      color: rawValue.color
     }
 
   }

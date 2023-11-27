@@ -73,7 +73,7 @@ export class GameComponent {
 
   words: WordsObject;
 
-  colors = ["bisque", "aquamarine", "cornsilk", "thistle"];
+  colors = ["#B74F6F", "#ADBDFF", "#FAA381", "#230C0F"];
 
 
   currentSelection: Array<string> = [];
@@ -89,9 +89,10 @@ export class GameComponent {
 
   ngOnInit(): void {
     this.db.object(`/words/${new Date().toJSON().slice(0, 10)}`).valueChanges().subscribe((res: any) => {
+      console.log(res)
       this.words = res;
       this.randomizedWords = this.randomizeWords(this.words)
-      this.words = this.assignColors(this.words);
+      // this.words = this.assignColors(this.words);
     })
   }
 
