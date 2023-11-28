@@ -13,21 +13,17 @@ export class ResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.clipboardResult = this.splitAndReplaceColors();
-
-    console.log(this.clipboardResult)
   }
 
   splitAndReplaceColors(): string[][] {
-    const groupsOfFour: string[][] = [];
+    const groupsOfFour: any = [];
 
-    for (let i = 0; i < this.data.colors.length; i += 4) {
-      const group = this.data.colors.slice(i, i + 4).map((color: any) => this.mapColorToEmoji(color));
+    // for (let i = 0; i < this.data.colors.length; i += 4) {
+      const group = this.data.colors.map((guess: any) => this.mapColorToEmoji(guess));
       groupsOfFour.push(group.join('\n'));
-    }
+    // }
 
-    groupsOfFour.push(['\n https://connections-bg.web.app']);
-
-    // groupsOfFour.push(['www.connections-bg.web.app']);
+    groupsOfFour[0] = groupsOfFour[0] +'\n\nhttps://connections-bg.web.app';
 
     return groupsOfFour;
   }
@@ -42,7 +38,7 @@ export class ResultComponent implements OnInit {
     };
 
     if (Array.isArray(colors)) {
-      return colors.map(color => colorEmojiMap[color] || color).join(',');
+      return colors.map(color => colorEmojiMap[color] || color).join('|');
     } else {
       return colorEmojiMap[colors] || colors;
     }

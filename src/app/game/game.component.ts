@@ -21,6 +21,7 @@ export class GameComponent {
   currentSelection: Array<string> = [];
   guessedWordsColor: Array<any> = [];
   livesLeft: number = 5;
+  gameIsSolved: boolean;
 
   constructor(private snackBar: MatSnackBar,
     private db: AngularFireDatabase,
@@ -171,6 +172,7 @@ export class GameComponent {
 
     if (this.guessedWords.length === 4) {
       this.openResults();
+      this.gameIsSolved = true;
     }
   }
 
