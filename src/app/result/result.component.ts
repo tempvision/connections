@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-result',
@@ -9,7 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ResultComponent implements OnInit {
   clipboardResult: any = [];
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar,) { }
 
   ngOnInit(): void {
     this.clipboardResult = this.splitAndReplaceColors();
@@ -19,11 +20,11 @@ export class ResultComponent implements OnInit {
     const groupsOfFour: any = [];
 
     // for (let i = 0; i < this.data.colors.length; i += 4) {
-      const group = this.data.colors.map((guess: any) => this.mapColorToEmoji(guess));
-      groupsOfFour.push(group.join('\n'));
+    const group = this.data.colors.map((guess: any) => this.mapColorToEmoji(guess));
+    groupsOfFour.push(group.join('\n'));
     // }
 
-    groupsOfFour[0] = groupsOfFour[0] +'\n\nhttps://connections-bg.web.app';
+    groupsOfFour[0] = groupsOfFour[0] + '\n\nhttps://connections-bg.web.app';
 
     return groupsOfFour;
   }
@@ -42,5 +43,9 @@ export class ResultComponent implements OnInit {
     } else {
       return colorEmojiMap[colors] || colors;
     }
+  }
+
+  copyToClipboard() {
+    this.snackBar.open('Резултатът е копиран!', 'OK✌')
   }
 }

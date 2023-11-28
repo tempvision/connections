@@ -22,6 +22,7 @@ export class GameComponent {
   guessedWordsColor: Array<any> = [];
   livesLeft: number = 5;
   gameIsSolved: boolean;
+  userResultsForToday: UserResults;
 
   constructor(private snackBar: MatSnackBar,
     private db: AngularFireDatabase,
@@ -33,14 +34,41 @@ export class GameComponent {
   ngOnInit(): void {
     this.userHasReadTheRules() ? '' : this.showRules();
     this.db.object(`/words/${new Date().toJSON().slice(0, 10)}`).valueChanges().subscribe((res: any) => {
-      console.log(res)
       this.words = res;
       this.randomizedWords = this.randomizeWords(this.words)
+      this.userAlreadyPlayed();
     })
   }
 
   userHasReadTheRules() {
     return localStorage.getItem('user-has-read-the-rules') ? true : false;
+  }
+
+  userAlreadyPlayed() {
+    if (localStorage.getItem('user-already-played')) {
+
+      this.userResultsForToday = JSON.parse(localStorage.getItem('user-already-played')!);
+
+      if (this.userResultsForToday.date === new Date().toJSON().slice(0, 10)) { // if the user played today
+        this.guessedWordsColor = this.userResultsForToday.resultInColors;
+        this.guessedWords = this.userResultsForToday.guessedWords;
+
+        this.guessedWords.forEach(guessedWord => {
+          guessedWord.words.forEach(word => {
+            this.randomizedWords = this.randomizedWords.filter(filteredWord => filteredWord !== word);
+          });
+        });
+
+        this.livesLeft = this.userResultsForToday.livesLeft;
+
+        if (!this.livesLeft || this.guessedWords.length === 4) {
+          this.gameIsSolved = true;
+        }
+      } else {
+        localStorage.removeItem('user-already-played') // clear if the data is not from today
+      }
+    }
+
   }
 
   randomizeWords(words: WordsObject) {
@@ -105,9 +133,23 @@ export class GameComponent {
       if (remainingCategory) {
         this.guessedWords = [...this.guessedWords, ...remainingCategory];
       }
+
+      this.setUserRecord();
+
       this.openResults();
       return;
     }
+  }
+
+  setUserRecord() {
+    const resultsForToday: UserResults = {
+      date: new Date().toJSON().slice(0, 10),
+      livesLeft: this.livesLeft,
+      guessedWords: this.guessedWords,
+      resultInColors: this.guessedWordsColor
+    }
+
+    localStorage.setItem('user-already-played', JSON.stringify(resultsForToday));
   }
 
   openResults() {
@@ -155,7 +197,6 @@ export class GameComponent {
     }
 
     this.guessIsCorrect(Object.keys(categoriesCount)[0]);
-
   }
 
   guessIsCorrect(category: string) {
@@ -174,6 +215,7 @@ export class GameComponent {
       this.openResults();
       this.gameIsSolved = true;
     }
+    this.setUserRecord();
   }
 
   guessIsIncorrect() {
@@ -187,6 +229,7 @@ export class GameComponent {
     });
 
     this.guessedWordsColor.push(incorrectColors);
+    this.setUserRecord();
   }
 
   showOneAway() { // tbi
@@ -200,6 +243,8 @@ export class GameComponent {
     });
 
     this.guessedWordsColor.push(oneAwayColors);
+
+    this.setUserRecord();
   }
 
   deselect() {
@@ -226,5 +271,12 @@ export interface Category {
 
 export interface WordsObject {
   [key: string]: Category;
+}
+
+export interface UserResults {
+  date: string;
+  livesLeft: number;
+  guessedWords: Array<any>;
+  resultInColors: Array<any>
 }
 

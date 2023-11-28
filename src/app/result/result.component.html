@@ -7,5 +7,5 @@
             <!-- {{color}} -->
         </span>
     </div>
-    <button [cdkCopyToClipboard]="clipboardResult" class="btn-neu">Копирай резултата в клипборда</button>
+    <button [cdkCopyToClipboard]="clipboardResult" (click)="copyToClipboard()" class="btn-neu">Копирай резултата в клипборда</button>
 </div>
