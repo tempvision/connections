@@ -30,12 +30,16 @@ export class GameComponent {
 
 
   ngOnInit(): void {
+    this.userHasReadTheRules() ? '' : this.showRules();
     this.db.object(`/words/${new Date().toJSON().slice(0, 10)}`).valueChanges().subscribe((res: any) => {
       console.log(res)
       this.words = res;
       this.randomizedWords = this.randomizeWords(this.words)
-      // this.words = this.assignColors(this.words);
     })
+  }
+
+  userHasReadTheRules() {
+    return localStorage.getItem('user-has-read-the-rules') ? true : false;
   }
 
   randomizeWords(words: WordsObject) {
@@ -100,13 +104,17 @@ export class GameComponent {
       if (remainingCategory) {
         this.guessedWords = [...this.guessedWords, ...remainingCategory];
       }
-      this.dialog.open(ResultComponent, {
-        data: {
-          colors: this.guessedWordsColor
-        }
-      })
+      this.openResults();
       return;
     }
+  }
+
+  openResults() {
+    this.dialog.open(ResultComponent, {
+      data: {
+        colors: this.guessedWordsColor
+      }
+    })
   }
 
   checkCategories(selectedWords: string[], words: any): void | undefined {
@@ -162,11 +170,7 @@ export class GameComponent {
     this.currentSelection = [];
 
     if (this.guessedWords.length === 4) {
-      this.dialog.open(ResultComponent, {
-        data: {
-          colors: this.guessedWordsColor
-        }
-      });
+      this.openResults();
     }
   }
 
@@ -206,7 +210,8 @@ export class GameComponent {
   }
 
   showRules() {
-    this.dialog.open(RulesComponent)
+    this.dialog.open(RulesComponent);
+    localStorage.setItem('user-has-read-the-rules', 'true');
   }
 
 }
