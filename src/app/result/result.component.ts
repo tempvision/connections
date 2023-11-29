@@ -24,7 +24,7 @@ export class ResultComponent implements OnInit {
     groupsOfFour.push(group.join('\n'));
     // }
 
-    groupsOfFour[0] = groupsOfFour[0] + '\n\nhttps://connections-bg.web.app';
+    groupsOfFour[0] = groupsOfFour[0] + '\n\nhttps://connections.bg';
 
     return groupsOfFour;
   }
