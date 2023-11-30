@@ -1,6 +1,19 @@
 .guessed-color-box {
-    width: 25px;
-    height: 25px;
-    display: block;
-    margin: 10px;
-  }
+  width: 25px;
+  height: 25px;
+  display: block;
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.share-img {
+  width: 20px;
+  margin-left: 5px;
+}
+
+.share-btn {
+  background: #EAF2D7;
+  font-weight: bold;
+  margin-top: 25px;
+}
+

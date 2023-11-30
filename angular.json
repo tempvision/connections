@@ -29,15 +29,11 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
-              "node_modules/ngx-sharebuttons/themes/circles.scss",
-              "node_modules/ngx-sharebuttons/themes/modern.scss",
               "src/styles.scss",
               "src/theme.scss"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {

@@ -19,8 +19,6 @@ import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { GameModule } from './game/game.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ResultComponent } from './result/result.component';
-import { ShareButtonModule } from 'ngx-sharebuttons/button';
-import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 
@@ -43,8 +41,6 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     GameModule,
     AdminPanelModule,
     ClipboardModule,
-    ShareButtonModule,
-    ShareIconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

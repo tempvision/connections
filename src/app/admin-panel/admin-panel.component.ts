@@ -61,36 +61,6 @@ export class AdminPanelComponent implements OnInit {
       color: ['#FAA381'],
     });
 
-   
-  function createShareButton() {
-    const btn = document.createElement("button");
-  
-    const title = document.title;
-    const text = "Check this out!";
-    const url = window.location.href;
-  
-    btn.innerText = "share" in navigator ? "Share" : "Share via e-mail";
-  
-    btn.onclick = () => {
-      if (navigator.share !== undefined) {
-        navigator
-          .share({
-            title,
-            text,
-            url
-          })
-          .then(() => console.log("Shared!"))
-          .catch(err => console.error(err));
-      } else {
-        // window.location = `mailto:?subject=${title}&body=${text}%0A${url}`;
-      }
-    };
-  
-    return btn;
-  }
-  
-  document.title = "Demo";
-  document.body.appendChild(createShareButton());
     // colors: 230C0F FAA381 EAF2D7 #B74F6F #ADBDFF
 
     const words = this.db.object(`/words`).valueChanges().subscribe(res => { console.log(res); this.apiResponse = res; this.findNextFreeDate(res) })
