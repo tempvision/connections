@@ -9,7 +9,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ResultComponent implements OnInit {
   clipboardResult: any = [];
-  clipboardResultTWITTER: any = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private snackBar: MatSnackBar,) { }
 
@@ -20,10 +19,10 @@ export class ResultComponent implements OnInit {
   splitAndReplaceColors(): string[][] {
     const groupsOfFour: any = [];
 
+    // for (let i = 0; i < this.data.colors.length; i += 4) {
     const group = this.data.colors.map((guess: any) => this.mapColorToEmoji(guess));
     groupsOfFour.push(group.join('\n'));
-    
-    this.clipboardResultTWITTER = groupsOfFour;
+    // }
 
     groupsOfFour[0] = groupsOfFour[0] + '\n\nhttps://connections.bg';
 
