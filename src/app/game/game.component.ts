@@ -32,8 +32,10 @@ export class GameComponent {
 
 
   ngOnInit(): void {
+    const date = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toJSON().slice(0,10);
+    console.log('You are playing: ', date);
     this.userHasReadTheRules() ? '' : this.showRules();
-    this.db.object(`/words/${new Date().toJSON().slice(0, 10)}`).valueChanges().subscribe((res: any) => {
+    this.db.object(`/words/${date}`).valueChanges().subscribe((res: any) => {
       this.words = res;
       res.randomizedWords ? this.randomizedWords = res.randomizedWords : this.randomizedWords = this.randomizeWords(this.words)
       this.userAlreadyPlayed();

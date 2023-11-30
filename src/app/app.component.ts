@@ -10,6 +10,6 @@ export class AppComponent implements OnInit {
   title = 'connections';
 
   ngOnInit(): void {
-    console.log('hi')
+    console.log('instagram: @nydn_stkv');
   }
 }
