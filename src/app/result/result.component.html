@@ -7,5 +7,24 @@
             <!-- {{color}} -->
         </span>
     </div>
-    <button [cdkCopyToClipboard]="clipboardResult" (click)="copyToClipboard()" class="btn-neu">Копирай резултата в клипборда</button>
+    <button [cdkCopyToClipboard]="clipboardResult" (click)="copyToClipboard()" class="btn-neu d-flex m-auto mb-3">Копирай резултата в
+        клипборда</button>
+
+    <div class="d-flex">
+        <!-- <share-button button="copy" [description]="clipboardResult" [title]="clipboardResult" [theme]="'modern-dark'"
+            [url]="'https://connections.bg'"></share-button> -->
+        <!-- <share-button [cdkCopyToClipboard]="clipboardResult" button="facebook" [description]="clipboardResult" [title]="clipboardResult"
+            [theme]="'modern-dark'" [url]="'https://connections.bg'"></share-button> -->
+        <share-button [cdkCopyToClipboard]="clipboardResult" button="messenger" [description]="clipboardResultTWITTER" [title]="clipboardResult"
+            [theme]="'modern-dark'" [url]="'https://connections.bg'"></share-button>
+        <share-button [cdkCopyToClipboard]="clipboardResult" button="viber" [description]="clipboardResultTWITTER" [title]="clipboardResult" [theme]="'modern-dark'"
+            [url]="'https://connections.bg'"></share-button>
+        <share-button [cdkCopyToClipboard]="clipboardResult" button="twitter" [description]="clipboardResultTWITTER" [title]="clipboardResult" [theme]="'modern-dark'"
+            [url]="'https://connections.bg'"></share-button>
+            <share-button [cdkCopyToClipboard]="clipboardResult" button="whatsapp" [description]="clipboardResultTWITTER" [title]="clipboardResultTWITTER" [theme]="'modern-dark'"
+            [url]="'https://connections.bg'"></share-button>
+            
+        <!-- <share-button button="telegram" [description]="clipboardResult" [title]="clipboardResult"
+            [theme]="'modern-dark'" [url]="'https://connections.bg'"></share-button> -->
+    </div>
 </div>
