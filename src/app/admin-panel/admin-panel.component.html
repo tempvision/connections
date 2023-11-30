@@ -1,6 +1,15 @@
-<h2>свободна дата: {{nextFreeDate}}</h2>
+<div class="wrapper">
 
-<div class="wrapper"> <!--FIRST CATEGORY -->
+    <h2>свободна дата: {{nextFreeDate}}</h2>
+
+    <input type="text" (keydown.enter)="login()" [(ngModel)]="username" />
+    <button (click)="login()">Login</button>
+
+</div>
+    <ng-container *ngIf="loggedIn">
+
+
+<div class="wrapper" [style.background]="firstCategory.get('color')?.value"> <!--FIRST CATEGORY -->
     Въведи долу
     <form [formGroup]="firstCategory">
         <div>
@@ -40,7 +49,7 @@
 
 </div>
 
-<div class="wrapper"> <!--second CATEGORY -->
+<div class="wrapper" [style.background]="secondCategory.get('color')?.value"> <!--second CATEGORY -->
     Въведи долу
     <form [formGroup]="secondCategory">
         <div>
@@ -80,7 +89,7 @@
 
 </div>
 
-<div class="wrapper"> <!--third CATEGORY -->
+<div class="wrapper" [style.background]="thirdCategory.get('color')?.value"> <!--third CATEGORY -->
     Въведи долу
     <form [formGroup]="thirdCategory">
         <div>
@@ -120,7 +129,7 @@
 
 </div>
 
-<div class="wrapper"> <!--Fourth CATEGORY -->
+<div class="wrapper" [style.background]="fourthCategory.get('color')?.value"> <!--Fourth CATEGORY -->
     Въведи долу
     <form [formGroup]="fourthCategory">
         <div>
@@ -161,11 +170,16 @@
 </div>
 
 
-<button (click)="saveWords()">
-    Save
-</button>
+<div class="wrapper">
+
+    <button class="btn-neu" (click)="saveWords()">
+        Save
+    </button>
 
 
-<button (click)="resetForms()">
-    Reset
-</button>
+    <button class="btn-neu" (click)="resetForms()">
+        Reset
+    </button>
+</div>
+
+</ng-container>

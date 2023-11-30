@@ -16,6 +16,8 @@ export class AdminPanelComponent implements OnInit {
   secondCategory: FormGroup;
   thirdCategory: FormGroup;
   fourthCategory: FormGroup;
+  loggedIn: boolean;
+  username: string;
   constructor(private db: AngularFireDatabase, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -84,24 +86,24 @@ export class AdminPanelComponent implements OnInit {
 
   findMissingDate(data: any) {
     const dates = Object.keys(data).sort();
-  
+
     for (let i = 0; i < dates.length - 1; i++) {
       const currentDate = dates[i];
       const nextDate = dates[i + 1];
-  
+
       const currentDateObj = new Date(currentDate);
       const nextDateObj = new Date(nextDate);
-  
+
       currentDateObj.setDate(currentDateObj.getDate() + 1);
-  
+
       if (currentDateObj.toISOString().slice(0, 10) !== nextDateObj.toISOString().slice(0, 10)) {
         return currentDateObj.toISOString().slice(0, 10);
       }
     }
-  
+
     return null; // No missing date found
   }
-  
+
 
   saveWords() {
 
@@ -136,5 +138,11 @@ export class AdminPanelComponent implements OnInit {
     this.secondCategory.reset();
     this.thirdCategory.reset();
     this.fourthCategory.reset();
+  }
+
+  login() {
+    if (this.username === 'magdi' || this.username === 'naka') {
+      this.loggedIn = true;
+    }
   }
 }
