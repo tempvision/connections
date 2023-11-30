@@ -7,6 +7,8 @@ import { AdminPanelComponent } from './admin-panel.component';
 import { MatInputModule } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShareButtonModule } from 'ngx-sharebuttons/button';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 
 
 
@@ -20,7 +22,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+
+    ShareButtonModule, //TEST
+    ShareIconsModule
   ]
 })
 export class AdminPanelModule { }
