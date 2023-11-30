@@ -115,6 +115,9 @@ export class AdminPanelComponent implements OnInit {
 
       console.log(this.newWords)
 
+      this.newWords['randomizedWords'] = this.randomizeWords(this.newWords)
+
+
       const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
       newDatesRef.set(this.newWords);
 
@@ -123,6 +126,20 @@ export class AdminPanelComponent implements OnInit {
       // snackbar
     }
   }
+
+  randomizeWords(words: WordsObject) {
+    return this.shuffleArray(Object.values(words).reduce((acc: any, category: any) => acc.concat(category.words), []));
+  }
+
+  
+  shuffleArray(array: any) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
 
   formatWords(rawValue: any) {
     this.newWords[rawValue.number] = {

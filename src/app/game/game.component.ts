@@ -35,7 +35,7 @@ export class GameComponent {
     this.userHasReadTheRules() ? '' : this.showRules();
     this.db.object(`/words/${new Date().toJSON().slice(0, 10)}`).valueChanges().subscribe((res: any) => {
       this.words = res;
-      this.randomizedWords = this.randomizeWords(this.words)
+      res.randomizedWords ? this.randomizedWords = res.randomizedWords : this.randomizedWords = this.randomizeWords(this.words)
       this.userAlreadyPlayed();
     })
   }
