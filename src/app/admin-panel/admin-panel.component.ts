@@ -73,12 +73,35 @@ export class AdminPanelComponent implements OnInit {
     // Get the last date
     const lastDate = dateObjects[dateObjects.length - 1];
 
+    const missingDate = this.findMissingDate(apiResponse)
+
     // Calculate the next date by adding one day (86400000 milliseconds) to the last date
     const nextDate = new Date(lastDate.getTime() + 86400000);
 
     // Format the next date as a string in the 'YYYY-MM-DD' format
-    this.nextFreeDate = nextDate.toISOString().split('T')[0];
+    this.nextFreeDate = missingDate ? missingDate : nextDate.toISOString().split('T')[0];
   }
+
+  findMissingDate(data: any) {
+    const dates = Object.keys(data).sort();
+  
+    for (let i = 0; i < dates.length - 1; i++) {
+      const currentDate = dates[i];
+      const nextDate = dates[i + 1];
+  
+      const currentDateObj = new Date(currentDate);
+      const nextDateObj = new Date(nextDate);
+  
+      currentDateObj.setDate(currentDateObj.getDate() + 1);
+  
+      if (currentDateObj.toISOString().slice(0, 10) !== nextDateObj.toISOString().slice(0, 10)) {
+        return currentDateObj.toISOString().slice(0, 10);
+      }
+    }
+  
+    return null; // No missing date found
+  }
+  
 
   saveWords() {
 
