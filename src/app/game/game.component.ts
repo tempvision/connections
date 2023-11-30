@@ -269,6 +269,7 @@ export interface Category {
   words: string[];
   categoryName: string;
   color?: string; // Optional color property
+  randomizedWords?: Array<string>; // Optional color property
 }
 
 export interface WordsObject {

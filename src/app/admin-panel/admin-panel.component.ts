@@ -18,6 +18,7 @@ export class AdminPanelComponent implements OnInit {
   fourthCategory: FormGroup;
   loggedIn: boolean;
   username: string;
+  allWords: Array<any>;
   constructor(private db: AngularFireDatabase, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -63,7 +64,8 @@ export class AdminPanelComponent implements OnInit {
 
     // colors: 230C0F FAA381 EAF2D7 #B74F6F #ADBDFF
 
-    const words = this.db.object(`/words`).valueChanges().subscribe(res => { console.log(res); this.apiResponse = res; this.findNextFreeDate(res) })
+    this.db.object(`/words`).valueChanges().subscribe((res: any) => { console.log(res); this.apiResponse = res; this.allWords = Object.keys(res); this.findNextFreeDate(res) })
+
   }
 
   findNextFreeDate(apiResponse: any) {

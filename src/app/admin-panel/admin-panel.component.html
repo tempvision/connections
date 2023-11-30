@@ -6,180 +6,195 @@
     <button (click)="login()">Login</button>
 
 </div>
-    <ng-container *ngIf="loggedIn">
+<ng-container *ngIf="loggedIn">
 
 
-<div class="wrapper" [style.background]="firstCategory.get('color')?.value"> <!--FIRST CATEGORY -->
-    Въведи долу
-    <form [formGroup]="firstCategory">
-        <div>
+    <div class="wrapper" [style.background]="firstCategory.get('color')?.value"> <!--FIRST CATEGORY -->
+        Въведи долу
+        <form [formGroup]="firstCategory">
+            <div>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Number</mat-label>
+                    <input formControlName="number" matInput type="text" placeholder="Number">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Категория, която ще се покаже</mat-label>
+                    <input formControlName="displayCategory" matInput type="text"
+                        placeholder="Категория, която ще се покаже">
+                </mat-form-field>
+            </div>
 
             <mat-form-field appearance="fill">
-                <mat-label>Number</mat-label>
-                <input formControlName="number" matInput type="text" placeholder="Number">
+                <mat-label>Дума 1</mat-label>
+                <input formControlName="word1" matInput type="text" placeholder="Дума 1">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Категория, която ще се покаже</mat-label>
-                <input formControlName="displayCategory" matInput type="text"
-                    placeholder="Категория, която ще се покаже">
-            </mat-form-field>
-        </div>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 1</mat-label>
-            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 2</mat-label>
-            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 3</mat-label>
-            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 4</mat-label>
-            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
-        </mat-form-field>
-    </form>
-
-</div>
-
-<div class="wrapper" [style.background]="secondCategory.get('color')?.value"> <!--second CATEGORY -->
-    Въведи долу
-    <form [formGroup]="secondCategory">
-        <div>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Number</mat-label>
-                <input formControlName="number" matInput type="text" placeholder="Number">
+                <mat-label>Дума 2</mat-label>
+                <input formControlName="word2" matInput type="text" placeholder="Дума 2">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Категория, която ще се покаже</mat-label>
-                <input formControlName="displayCategory" matInput type="text"
-                    placeholder="Категория, която ще се покаже">
-            </mat-form-field>
-        </div>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 1</mat-label>
-            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 2</mat-label>
-            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 3</mat-label>
-            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 4</mat-label>
-            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
-        </mat-form-field>
-    </form>
-
-</div>
-
-<div class="wrapper" [style.background]="thirdCategory.get('color')?.value"> <!--third CATEGORY -->
-    Въведи долу
-    <form [formGroup]="thirdCategory">
-        <div>
-
-            <mat-form-field appearance="fill">
-                <mat-label>Number</mat-label>
-                <input formControlName="number" matInput type="text" placeholder="Number">
+                <mat-label>Дума 3</mat-label>
+                <input formControlName="word3" matInput type="text" placeholder="Дума 3">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Категория, която ще се покаже</mat-label>
-                <input formControlName="displayCategory" matInput type="text"
-                    placeholder="Категория, която ще се покаже">
+                <mat-label>Дума 4</mat-label>
+                <input formControlName="word4" matInput type="text" placeholder="Дума 4">
             </mat-form-field>
-        </div>
+        </form>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 1</mat-label>
-            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
-        </mat-form-field>
+    </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 2</mat-label>
-            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
-        </mat-form-field>
+    <div class="wrapper" [style.background]="secondCategory.get('color')?.value"> <!--second CATEGORY -->
+        Въведи долу
+        <form [formGroup]="secondCategory">
+            <div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 3</mat-label>
-            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
-        </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Number</mat-label>
+                    <input formControlName="number" matInput type="text" placeholder="Number">
+                </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 4</mat-label>
-            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
-        </mat-form-field>
-    </form>
-
-</div>
-
-<div class="wrapper" [style.background]="fourthCategory.get('color')?.value"> <!--Fourth CATEGORY -->
-    Въведи долу
-    <form [formGroup]="fourthCategory">
-        <div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Категория, която ще се покаже</mat-label>
+                    <input formControlName="displayCategory" matInput type="text"
+                        placeholder="Категория, която ще се покаже">
+                </mat-form-field>
+            </div>
 
             <mat-form-field appearance="fill">
-                <mat-label>Number</mat-label>
-                <input formControlName="number" matInput type="text" placeholder="Number">
+                <mat-label>Дума 1</mat-label>
+                <input formControlName="word1" matInput type="text" placeholder="Дума 1">
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Категория, която ще се покаже</mat-label>
-                <input formControlName="displayCategory" matInput type="text"
-                    placeholder="Категория, която ще се покаже">
+                <mat-label>Дума 2</mat-label>
+                <input formControlName="word2" matInput type="text" placeholder="Дума 2">
             </mat-form-field>
-        </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 1</mat-label>
-            <input formControlName="word1" matInput type="text" placeholder="Дума 1">
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 3</mat-label>
+                <input formControlName="word3" matInput type="text" placeholder="Дума 3">
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 2</mat-label>
-            <input formControlName="word2" matInput type="text" placeholder="Дума 2">
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 4</mat-label>
+                <input formControlName="word4" matInput type="text" placeholder="Дума 4">
+            </mat-form-field>
+        </form>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 3</mat-label>
-            <input formControlName="word3" matInput type="text" placeholder="Дума 3">
-        </mat-form-field>
+    </div>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Дума 4</mat-label>
-            <input formControlName="word4" matInput type="text" placeholder="Дума 4">
-        </mat-form-field>
-    </form>
+    <div class="wrapper" [style.background]="thirdCategory.get('color')?.value"> <!--third CATEGORY -->
+        Въведи долу
+        <form [formGroup]="thirdCategory">
+            <div>
 
-</div>
+                <mat-form-field appearance="fill">
+                    <mat-label>Number</mat-label>
+                    <input formControlName="number" matInput type="text" placeholder="Number">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Категория, която ще се покаже</mat-label>
+                    <input formControlName="displayCategory" matInput type="text"
+                        placeholder="Категория, която ще се покаже">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 1</mat-label>
+                <input formControlName="word1" matInput type="text" placeholder="Дума 1">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 2</mat-label>
+                <input formControlName="word2" matInput type="text" placeholder="Дума 2">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 3</mat-label>
+                <input formControlName="word3" matInput type="text" placeholder="Дума 3">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 4</mat-label>
+                <input formControlName="word4" matInput type="text" placeholder="Дума 4">
+            </mat-form-field>
+        </form>
+
+    </div>
+
+    <div class="wrapper" [style.background]="fourthCategory.get('color')?.value"> <!--Fourth CATEGORY -->
+        Въведи долу
+        <form [formGroup]="fourthCategory">
+            <div>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Number</mat-label>
+                    <input formControlName="number" matInput type="text" placeholder="Number">
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Категория, която ще се покаже</mat-label>
+                    <input formControlName="displayCategory" matInput type="text"
+                        placeholder="Категория, която ще се покаже">
+                </mat-form-field>
+            </div>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 1</mat-label>
+                <input formControlName="word1" matInput type="text" placeholder="Дума 1">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 2</mat-label>
+                <input formControlName="word2" matInput type="text" placeholder="Дума 2">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 3</mat-label>
+                <input formControlName="word3" matInput type="text" placeholder="Дума 3">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Дума 4</mat-label>
+                <input formControlName="word4" matInput type="text" placeholder="Дума 4">
+            </mat-form-field>
+        </form>
+
+    </div>
 
 
-<div class="wrapper">
+    <div class="wrapper">
 
-    <button class="btn-neu" (click)="saveWords()">
-        Save
-    </button>
+        <button class="btn-neu" (click)="saveWords()">
+            Save
+        </button>
 
 
-    <button class="btn-neu" (click)="resetForms()">
-        Reset
-    </button>
-</div>
+        <button class="btn-neu" (click)="resetForms()">
+            Reset
+        </button>
+    </div>
+
+    <mat-accordion *ngIf="allWords && apiResponse" class="wrapper">
+        <mat-expansion-panel *ngFor="let date of allWords">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{date}}
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p> <ng-container *ngFor="let category of apiResponse[date] | keyvalue">
+                {{category | json}}</ng-container>
+            </p>
+        </mat-expansion-panel>
+    </mat-accordion>
 
 </ng-container>
