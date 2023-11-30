@@ -24,7 +24,7 @@ export class ResultComponent implements OnInit {
     const group = this.data.colors.map((guess: any) => this.mapColorToEmoji(guess));
     groupsOfFour.push(group.join('\n'));
 
-    this.clipboardResultTWITTER = JSON.parse(JSON.stringify(groupsOfFour[0] + '\n'));
+    this.clipboardResultTWITTER = JSON.parse(JSON.stringify(groupsOfFour[0] + '\n\n'));
 
     groupsOfFour[0] = groupsOfFour[0] + '\n\nhttps://connections.bg';
 
