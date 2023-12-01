@@ -99,34 +99,10 @@ h3 {
   cursor: pointer;
 }
 
-// .success-snackbar.mat-mdc-snack-bar-container {
-//   .mdc-snackbar__surface {
-//     background: green;
 
-//     .mat-mdc-button {
-//       color: white !important;
-//     }
-//   }
-
-//   .mat-mdc-snack-bar-label.mdc-snackbar__label {
-//     color: white;
-//     font-weight: 500;
-//     white-space: pre-wrap
-//   }
-// }
-
-// .success-snackbar {
-//   --mdc-snackbar-container-color: green;
-//   --mat-mdc-snack-bar-button-color: white;
-// }
-
-// .mat-mdc-snack-bar-container {
-//   &.success-snackbar {
-//     --mdc-snackbar-container-color: #2196f3;
-//     --mat-mdc-snack-bar-button-color: #fff;
-//     --mdc-snackbar-supporting-text-color: #fff;
-//   }
-// }
+.spinner::ng-deep circle{
+  stroke: #230C0F !important;
+  }
 
 .lives-indicator {
   margin: 5px;

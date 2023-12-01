@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 import { GameRoutingModule } from './game-routing.module';
 import { GameComponent } from './game.component';
 
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     GameComponent
   ],
   imports: [
     CommonModule,
-    GameRoutingModule
+    GameRoutingModule,
+    MatProgressSpinnerModule
   ]
 })
 export class GameModule { }

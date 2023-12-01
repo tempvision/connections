@@ -11,7 +11,7 @@ import { ResultComponent } from '../result/result.component';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent {
-  randomizedWords: Array<string> = [];
+  randomizedWords: Array<string> = Array(16).fill(null);
   guessedWords: Array<{ words: Array<string>, categoryName: string, color: string | undefined }> = [];
 
   words: WordsObject;

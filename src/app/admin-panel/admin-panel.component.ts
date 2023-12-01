@@ -63,6 +63,7 @@ export class AdminPanelComponent implements OnInit {
     });
 
     // colors: 230C0F FAA381 EAF2D7 #B74F6F #ADBDFF
+    // https://coolors.co/b74f6f-adbdff-eaf2d7-faa381-230c0f
 
     this.db.object(`/words`).valueChanges().subscribe((res: any) => { console.log(res); this.apiResponse = res; this.allWords = Object.keys(res); this.findNextFreeDate(res) })
 

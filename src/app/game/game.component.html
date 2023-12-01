@@ -9,7 +9,7 @@
 
 
 
-<ng-container *ngIf="livesLeft > 0">
+<ng-container *ngIf="livesLeft > 0"> <!-- GUESSED WORDS -->
   <div class="wrapper">
     <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color }">
       <div>
@@ -27,26 +27,27 @@
     </div>
   </div>
 
-
-  <div class="wrapper" *ngIf="!gameIsSolved">
+  <div class="wrapper" *ngIf="!gameIsSolved"> <!-- GAME -->
     <div *ngFor="let row of randomizedWords | slice:0:4; let i = index" class="grid-container">
       <div *ngFor="let word of randomizedWords | slice:i*4:(i+1)*4; let j = index" class="grid-item m-1"
         (click)="selectWord(word)" [ngClass]="currentSelection.includes(word) ? 'selected-word' : '' ">
         <span >
-
+         <span class="spinner">
+           <mat-spinner [diameter]="15" class="spinner" *ngIf="!word"></mat-spinner>
+         </span> 
           {{ word }}
         </span>
       </div>
     </div>
   </div>
 
-  <div class="d-flex justify-content-center" *ngIf="!gameIsSolved">
+  <div class="d-flex justify-content-center" *ngIf="!gameIsSolved"> <!-- LIVES -->
     <span *ngFor="let i of getLives(livesLeft); let index = index" class="lives-indicator">
       ✪
     </span>
   </div>
 
-  <div class="d-flex justify-content-center m-4" *ngIf="!gameIsSolved">
+  <div class="d-flex justify-content-center m-4" *ngIf="!gameIsSolved"> <!-- BUTTONS -->
     <button class="btn-neu yellow-bg m-4" type="submit" (click)="deselect()">Изчисти</button>
     <button class="btn-neu green-bg m-4" type="submit"
       (click)="checkCategories(this.currentSelection, this.words)">Провери</button>
@@ -57,7 +58,7 @@
   Опитай отново утре!
 </div>
 
-<div class="wrapper" *ngIf="livesLeft === 0">
+<div class="wrapper" *ngIf="livesLeft === 0"> <!-- 0 LIVES - GAME LOST -->
   <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color, 'color': row.color === '#230C0F' ? 'white' : 'black' }">
     <div>
       <div [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black' }">
@@ -77,7 +78,7 @@
 
 </div>
 
-<div class="d-flex justify-content-center" *ngIf="livesLeft === 0 || gameIsSolved">
+<div class="d-flex justify-content-center" *ngIf="livesLeft === 0 || gameIsSolved"> <!-- RESULTS  -->
   <button class="btn-neu m-4" type="submit" style="background: #EAF2D7; font-weight: bold;"
   (click)="openResults()">Виж резултата</button>
 </div>
