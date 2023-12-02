@@ -113,7 +113,8 @@ export class GameComponent {
         remainingCategories.push({
           words: remainingWords,
           categoryName: this.words[category].categoryName,
-          color: this.words[category].color
+          color: this.words[category].color,
+          categoryInfo: this.words[category].categoryInfo
         });
       }
     });
