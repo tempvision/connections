@@ -108,8 +108,8 @@ export class GameComponent {
     const remainingCategories: any = [];
 
     Object.keys(this.words).forEach(category => {
-      const remainingWords = this.words[category].words.filter(word => this.randomizedWords.includes(word));
-      if (remainingWords.length > 0) {
+      const remainingWords = this.words[category]?.words?.filter(word => this.randomizedWords.includes(word));
+      if (remainingWords?.length > 0) {
         remainingCategories.push({
           words: remainingWords,
           categoryName: this.words[category].categoryName,
