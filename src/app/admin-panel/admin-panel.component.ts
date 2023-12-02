@@ -30,6 +30,7 @@ export class AdminPanelComponent implements OnInit {
       word3: ['', Validators.required],
       word4: ['', Validators.required],
       color: ['#B74F6F'],
+      categoryInfo: [''],
     });
 
     this.secondCategory = this.fb.group({
@@ -40,6 +41,7 @@ export class AdminPanelComponent implements OnInit {
       word3: ['', Validators.required],
       word4: ['', Validators.required],
       color: ['#ADBDFF'],
+      categoryInfo: [''],
     });
 
     this.thirdCategory = this.fb.group({
@@ -50,6 +52,7 @@ export class AdminPanelComponent implements OnInit {
       word3: ['', Validators.required],
       word4: ['', Validators.required],
       color: ['#230C0F'],
+      categoryInfo: [''],
     });
 
     this.fourthCategory = this.fb.group({
@@ -60,7 +63,10 @@ export class AdminPanelComponent implements OnInit {
       word3: ['', Validators.required],
       word4: ['', Validators.required],
       color: ['#FAA381'],
+      categoryInfo: [''],
     });
+
+    window.location.href === 'http://localhost:4200/admin' ? this.loggedIn = true : this.loggedIn = false;
 
     // colors: 230C0F FAA381 EAF2D7 #B74F6F #ADBDFF
     // https://coolors.co/b74f6f-adbdff-eaf2d7-faa381-230c0f
@@ -120,10 +126,14 @@ export class AdminPanelComponent implements OnInit {
       console.log(this.newWords)
 
       this.newWords['randomizedWords'] = this.randomizeWords(this.newWords)
+      console.log(this.newWords)
 
 
       const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
       newDatesRef.set(this.newWords);
+
+      console.log(this.newWords)
+      console.log(newDatesRef)
 
       this.resetForms();
     } else {
@@ -135,7 +145,7 @@ export class AdminPanelComponent implements OnInit {
     return this.shuffleArray(Object.values(words).reduce((acc: any, category: any) => acc.concat(category.words), []));
   }
 
-  
+
   shuffleArray(array: any) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -149,7 +159,8 @@ export class AdminPanelComponent implements OnInit {
     this.newWords[rawValue.number] = {
       words: [rawValue.word1, rawValue.word2, rawValue.word3, rawValue.word4],
       categoryName: rawValue.displayCategory,
-      color: rawValue.color
+      color: rawValue.color,
+      categoryInfo: rawValue.categoryInfo ? rawValue.categoryInfo : null
     }
 
   }

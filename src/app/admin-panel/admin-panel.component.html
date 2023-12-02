@@ -45,6 +45,13 @@
                 <mat-label>Дума 4</mat-label>
                 <input formControlName="word4" matInput type="text" placeholder="Дума 4">
             </mat-form-field>
+
+            <div style="width: 50%;">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Пояснения</mat-label>
+                    <input formControlName="categoryInfo" matInput type="text" placeholder="Пояснения">
+                </mat-form-field>
+            </div>
         </form>
 
     </div>
@@ -85,8 +92,15 @@
                 <mat-label>Дума 4</mat-label>
                 <input formControlName="word4" matInput type="text" placeholder="Дума 4">
             </mat-form-field>
+            <div style="width: 50%;">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Пояснения</mat-label>
+                    <input formControlName="categoryInfo" matInput type="text" placeholder="Пояснения">
+                </mat-form-field>
+            </div>
         </form>
 
+    
     </div>
 
     <div class="wrapper" [style.background]="thirdCategory.get('color')?.value"> <!--third CATEGORY -->
@@ -125,8 +139,15 @@
                 <mat-label>Дума 4</mat-label>
                 <input formControlName="word4" matInput type="text" placeholder="Дума 4">
             </mat-form-field>
+            <div style="width: 50%;">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Пояснения</mat-label>
+                    <input formControlName="categoryInfo" matInput type="text" placeholder="Пояснения">
+                </mat-form-field>
+            </div>
         </form>
 
+    
     </div>
 
     <div class="wrapper" [style.background]="fourthCategory.get('color')?.value"> <!--Fourth CATEGORY -->
@@ -165,8 +186,15 @@
                 <mat-label>Дума 4</mat-label>
                 <input formControlName="word4" matInput type="text" placeholder="Дума 4">
             </mat-form-field>
+            <div style="width: 50%;">
+                <mat-form-field appearance="fill" style="width: 100%;">
+                    <mat-label>Пояснения</mat-label>
+                    <input formControlName="categoryInfo" matInput type="text" placeholder="Пояснения">
+                </mat-form-field>
+            </div>
         </form>
 
+    
     </div>
 
 
@@ -191,9 +219,47 @@
                 <mat-panel-description>
                 </mat-panel-description>
             </mat-expansion-panel-header>
-            <p> <ng-container *ngFor="let category of apiResponse[date] | keyvalue">
-                {{category | json}}</ng-container>
-            </p>
+            <div class="guessed-grid-container"
+                [ngStyle]="{'background': date.color, 'color': date.color === '#230C0F' ? 'white' : 'black' }">
+                <!-- {{apiResponse[date] | json}} -->
+
+                <div [ngStyle]="{'background': apiResponse[date][1]?.color, 'color': apiResponse[date][1]?.color === '#230C0F' ? 'white' : 'black' }">
+                    {{apiResponse[date][1]?.categoryName | json}}
+                    <br>
+                    {{apiResponse[date][1]?.words[0] | json}}
+                    {{apiResponse[date][1]?.words[1] | json}}
+                    {{apiResponse[date][1]?.words[2] | json}}
+                    {{apiResponse[date][1]?.words[3] | json}}
+                </div>
+
+                <div [ngStyle]="{'background': apiResponse[date][2]?.color, 'color': apiResponse[date][2]?.color === '#230C0F' ? 'white' : 'black' }">
+                    {{apiResponse[date][2]?.categoryName | json}}
+                    <br>
+                    {{apiResponse[date][2]?.words[0] | json}}
+                    {{apiResponse[date][2]?.words[1] | json}}
+                    {{apiResponse[date][2]?.words[2] | json}}
+                    {{apiResponse[date][2]?.words[3] | json}}
+                </div>
+
+                <div [ngStyle]="{'background': apiResponse[date][3]?.color, 'color': apiResponse[date][3]?.color === '#230C0F' ? 'white' : 'black' }">
+                    {{apiResponse[date][3]?.categoryName | json}}
+                    <br>
+                    {{apiResponse[date][3]?.words[0] | json}}
+                    {{apiResponse[date][3]?.words[1] | json}}
+                    {{apiResponse[date][3]?.words[2] | json}}
+                    {{apiResponse[date][3]?.words[3] | json}}
+                </div>
+
+                <div [ngStyle]="{'background': apiResponse[date][4]?.color, 'color': apiResponse[date][4]?.color === '#240C0F' ? 'white' : 'black' }">
+                    {{apiResponse[date][4]?.categoryName | json}}
+                    <br>
+                    {{apiResponse[date][4]?.words[0] | json}}
+                    {{apiResponse[date][4]?.words[1] | json}}
+                    {{apiResponse[date][4]?.words[2] | json}}
+                    {{apiResponse[date][4]?.words[3] | json}}
+                </div>
+
+            </div>
         </mat-expansion-panel>
     </mat-accordion>
 
