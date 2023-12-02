@@ -24,7 +24,11 @@
           </ng-container>
         </div>
       </div>
+      <span *ngIf="row.categoryInfo" (click)="showCategoryInfo(row)"><img class="info-results"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/1200px-Icon-round-Question_mark.svg.png"
+        alt="" srcset=""></span>
     </div>
+
   </div>
 
   <div class="wrapper" *ngIf="!gameIsSolved"> <!-- GAME -->
@@ -72,6 +76,9 @@
         </ng-container>
       </div>
     </div>
+    <span *ngIf="row.categoryInfo" (click)="showCategoryInfo(row)"><img class="info-results"
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Icon-round-Question_mark.svg/1200px-Icon-round-Question_mark.svg.png"
+      alt="" srcset=""></span>
   </div>
 
   

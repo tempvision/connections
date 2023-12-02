@@ -19,6 +19,7 @@ import { AdminPanelModule } from './admin-panel/admin-panel.module';
 import { GameModule } from './game/game.module';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 import { ResultComponent } from './result/result.component';
+import { CategoryInfoComponent } from './category-info/category-info.component';
 
 
 
@@ -26,7 +27,8 @@ import { ResultComponent } from './result/result.component';
   declarations: [
     AppComponent,
     RulesComponent,
-    ResultComponent
+    ResultComponent,
+    CategoryInfoComponent
   ],
   imports: [
     AppRoutingModule,

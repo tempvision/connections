@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { MatDialog } from '@angular/material/dialog';
 import { RulesComponent } from '../rules/rules.component';
 import { ResultComponent } from '../result/result.component';
+import { CategoryInfoComponent } from '../category-info/category-info.component';
 
 @Component({
   selector: 'app-game',
@@ -12,7 +13,7 @@ import { ResultComponent } from '../result/result.component';
 })
 export class GameComponent {
   randomizedWords: Array<string> = Array(16).fill(null);
-  guessedWords: Array<{ words: Array<string>, categoryName: string, color: string | undefined }> = [];
+  guessedWords: Array<{ words: Array<string>, categoryName: string, color: string | undefined, categoryInfo: string | undefined }> = [];
 
   words: WordsObject;
 
@@ -209,7 +210,7 @@ export class GameComponent {
     const categoryColors = this.currentSelection.map(word => this.words[category].color);
     this.guessedWordsColor.push(categoryColors);
 
-    this.guessedWords.push({ categoryName: this.words[category].categoryName, words: this.words[category].words, color: this.words[category].color })
+    this.guessedWords.push({ categoryName: this.words[category].categoryName, words: this.words[category].words, color: this.words[category].color, categoryInfo: this.words[category].categoryInfo })
 
     this.currentSelection = [];
 
@@ -263,6 +264,14 @@ export class GameComponent {
     localStorage.setItem('user-has-read-the-rules', 'true');
   }
 
+  showCategoryInfo(row: any) {
+    this.dialog.open(CategoryInfoComponent, {
+      data: {
+        row: row
+      }
+    })
+  }
+
 }
 
 export interface Category {
@@ -270,6 +279,7 @@ export interface Category {
   categoryName: string;
   color?: string; // Optional color property
   randomizedWords?: Array<string>; // Optional color property
+  categoryInfo?: string;
 }
 
 export interface WordsObject {

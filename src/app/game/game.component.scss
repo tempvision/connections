@@ -21,6 +21,8 @@
   text-align: center;
 
   margin-bottom: 10px;
+
+  position: relative;
 }
 
 .grid-item {
@@ -100,9 +102,9 @@ h3 {
 }
 
 
-.spinner::ng-deep circle{
+.spinner::ng-deep circle {
   stroke: #230C0F !important;
-  }
+}
 
 .lives-indicator {
   margin: 5px;
@@ -113,4 +115,11 @@ h3 {
 .text-info {
   font-size: x-large;
   margin-bottom: 50px;
+}
+
+.info-results {
+  width: 16px;
+  position: absolute;
+  right: 15px;
+  top: 45%;
 }
