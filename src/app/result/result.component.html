@@ -3,15 +3,17 @@
         X
     </button>
     <div *ngFor="let guess of data.colors" class="d-flex justify-content-center">
-        <span *ngFor="let color of guess" [ngStyle]="{'background-color': color }" class="guessed-color-box">
-            <!-- {{color}} -->
-        </span>
+        <span *ngFor="let color of guess" [ngStyle]="{'background-color': color }" class="guessed-color-box"></span>
     </div>
-    <!-- <button [cdkCopyToClipboard]="clipboardResult" (click)="copyToClipboard()" class="btn-neu d-flex m-auto mb-3">Копирай резултата в
-        клипборда</button> -->
 
     <div class="d-flex justify-content-center">
-        <button [cdkCopyToClipboard]="clipboardResult" (click)="shareBtn()" class="btn-neu d-flex justify-content-center align-items-center share-btn">Сподели <img class="share-img"
+        <button [cdkCopyToClipboard]="clipboardResult" (click)="shareBtn()"
+            class="btn-neu d-flex justify-content-center align-items-center share-btn">Сподели <img class="share-img"
                 src="../../assets/share.png" alt="" srcset=""></button>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button [cdkCopyToClipboard]="clipboardResult" (click)="copyToClipboard()"
+            class="btn-neu d-flex justify-content-center align-items-center share-btn">Копирай резултата</button>
     </div>
 </div>
