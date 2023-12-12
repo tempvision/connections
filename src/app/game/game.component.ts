@@ -34,7 +34,7 @@ export class GameComponent {
 
   ngOnInit(): void {
     const date = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toJSON().slice(0,10);
-    console.log('You are playing: ', date);
+    console.log('You are playing:', new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toJSON().replace('T', ' ').slice(0,19));
     this.userHasReadTheRules() ? '' : this.showRules();
     this.db.object(`/words/${date}`).valueChanges().subscribe((res: any) => {
       this.words = res;
