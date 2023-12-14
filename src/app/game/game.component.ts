@@ -33,8 +33,8 @@ export class GameComponent {
 
 
   ngOnInit(): void {
-    const date = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toJSON().slice(0,10);
-    console.log('You are playing:', new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toJSON().replace('T', ' ').slice(0,19));
+    const date = new Date(new Date().getTime() + 0* 60 * 60 * 1000).toJSON().slice(0,10);
+    console.log('You are playing:', new Date(new Date().getTime() +0 * 60 * 60 * 1000).toJSON().replace('T', ' ').slice(0,19));
     this.userHasReadTheRules() ? '' : this.showRules();
     this.db.object(`/words/${date}`).valueChanges().subscribe((res: any) => {
       this.words = res;
@@ -52,7 +52,7 @@ export class GameComponent {
 
       this.userResultsForToday = JSON.parse(localStorage.getItem('user-already-played')!);
 
-      if (this.userResultsForToday.date === new Date().toJSON().slice(0, 10)) { // if the user played today
+      if (this.userResultsForToday.date === new Date(new Date().getTime() + 0* 60 * 60 * 1000).toJSON().slice(0,10)) { // if the user played today
         this.guessedWordsColor = this.userResultsForToday.resultInColors;
         this.guessedWords = this.userResultsForToday.guessedWords;
 
