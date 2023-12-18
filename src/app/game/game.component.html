@@ -35,7 +35,7 @@
     <div *ngFor="let row of randomizedWords | slice:0:4; let i = index" class="grid-container">
       <div *ngFor="let word of randomizedWords | slice:i*4:(i+1)*4; let j = index" class="grid-item m-1"
         (click)="selectWord(word)" [ngClass]="currentSelection.includes(word) ? 'selected-word' : '' ">
-        <span class="text-align-center" [ngStyle]="{'font-size': (word?.length ?? 0) > 10 ? 'small' : '' }">
+        <span class="text-align-center" [ngStyle]="{'font-size': (word?.length ?? 0) > 10 ? 'smaller' : '' }">
          <span class="spinner">
            <mat-spinner [diameter]="15" class="spinner" *ngIf="!word"></mat-spinner>
          </span> 
