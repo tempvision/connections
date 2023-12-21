@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { WordsObject } from '../game/game.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-panel',
@@ -19,7 +20,7 @@ export class AdminPanelComponent implements OnInit {
   loggedIn: boolean;
   username: string;
   allWords: Array<any>;
-  constructor(private db: AngularFireDatabase, private fb: FormBuilder) { }
+  constructor(private db: AngularFireDatabase, private fb: FormBuilder, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.firstCategory = this.fb.group({
@@ -128,6 +129,14 @@ export class AdminPanelComponent implements OnInit {
       this.newWords['randomizedWords'] = this.randomizeWords(this.newWords)
       console.log(this.newWords)
 
+      const wordsAreDuplicated = this.hasDuplicates(this.newWords['randomizedWords']);
+      console.log(wordsAreDuplicated)
+
+      if (wordsAreDuplicated) {
+        this.snackBar.open('има дублицирана дума ВЕ', 'OF DOBREEE', { panelClass: ['success-snackbar'], duration: 4000 });
+        this.newWords = {};
+        return;
+      }
 
       const newDatesRef = this.db.object(`/words/${this.nextFreeDate}`);
       newDatesRef.set(this.newWords);
@@ -137,8 +146,12 @@ export class AdminPanelComponent implements OnInit {
 
       this.resetForms();
     } else {
-      // snackbar
+      this.snackBar.open('има nestho nevalidno tuka wa', 'OF DOBREEE', { panelClass: ['success-snackbar'], duration: 4000 });
     }
+  }
+
+  hasDuplicates(array: any) {
+    return new Set(array).size !== array.length;
   }
 
   randomizeWords(words: WordsObject) {
