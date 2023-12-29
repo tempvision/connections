@@ -145,6 +145,7 @@ export class AdminPanelComponent implements OnInit {
       console.log(newDatesRef)
 
       this.resetForms();
+
     } else {
       this.snackBar.open('има nestho nevalidno tuka wa', 'OF DOBREEE', { panelClass: ['success-snackbar'], duration: 4000 });
     }
@@ -167,6 +168,17 @@ export class AdminPanelComponent implements OnInit {
     return array;
   }
 
+  editWords(date: any) {
+    // this.nextFreeDate = date;
+    this.snackBar.open('EDIT MODE', 'OK', { panelClass: ['success-snackbar'], duration: 4000 });
+
+    this.db.object(`/words/${date}`).valueChanges().subscribe((res: any) => {
+      console.log(res);
+      // logic for edit words
+    })
+
+  }
+
 
   formatWords(rawValue: any) {
     this.newWords[rawValue.number] = {
@@ -183,6 +195,11 @@ export class AdminPanelComponent implements OnInit {
     this.secondCategory.reset();
     this.thirdCategory.reset();
     this.fourthCategory.reset();
+
+    this.firstCategory.get('number')?.setValue('1');
+    this.secondCategory.get('number')?.setValue('2');
+    this.thirdCategory.get('number')?.setValue('3');
+    this.fourthCategory.get('number')?.setValue('4');
   }
 
   login() {
