@@ -214,10 +214,17 @@
         <mat-expansion-panel *ngFor="let date of allWords">
             <mat-expansion-panel-header>
                 <mat-panel-title>
-                    {{date}}
+                    <div class="d-flex justify-content-between w-100 align-items-center">
+                        <span>
+                            {{date}}
+                        </span>
+                        <span>
+                            <button (click)="editWords(date)" class="btn-neu">edit</button>
+                        </span>
+                    </div>
                 </mat-panel-title>
-                <mat-panel-description>
-                </mat-panel-description>
+                <!-- <mat-panel-description>
+                </mat-panel-description> -->
             </mat-expansion-panel-header>
             <div class="guessed-grid-container"
                 [ngStyle]="{'background': date.color, 'color': date.color === '#230C0F' ? 'white' : 'black' }">
