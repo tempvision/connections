@@ -14,7 +14,7 @@
     <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color }">
       <div>
         <div>
-          <h3 [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black' }">{{ row.categoryName }}</h3>
+          <h3 [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black', 'font-size': row.categoryName.length > 25 ? '1.2rem' : '' }">{{ row.categoryName }}</h3>
         </div>
         <div>
           <ng-container *ngFor="let word of row.words; let i = index">
@@ -64,8 +64,8 @@
 
 <div class="wrapper" *ngIf="livesLeft === 0"> <!-- 0 LIVES - GAME LOST -->
   <div *ngFor="let row of guessedWords" class="guessed-grid-container" [ngStyle]="{'background': row.color, 'color': row.color === '#230C0F' ? 'white' : 'black' }">
-    <div>
-      <div [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black' }">
+    <div> 
+      <div [ngStyle]="{'color': row.color === '#230C0F' ? 'white' : 'black', 'font-size': row.categoryName.length > 25 ? '1.2rem' : ''}">
         <h3>{{ row.categoryName }}</h3>
       </div>
       <div>
